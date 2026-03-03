@@ -1,0 +1,39 @@
+espectro-bikes/
+│
+├── index.html
+├── cadastro-produto.html
+├── produto.html
+├── carrinho.html
+├── checkout.html
+├── perfil.html
+├── login.html
+├── mensagens.html
+│
+├── css/
+│   ├── style.css
+│   ├── components.css
+│   └── responsive.css
+│
+├── js/
+│   ├── main.js
+│   ├── data.js
+│   ├── api.js
+│   ├── auth.js
+│   ├── carrinho.js
+│   ├── produto.js
+│   ├── mensagens.js
+│   └── notificacoes.js
+│
+├── assets/
+│   ├── banners/
+│   │   ├── banner1.jpg
+│   │   ├── banner2.jpg
+│   │   └── banner3.jpg
+│   ├── produtos/
+│   │   └── (imagens dos produtos)
+│   ├── icons/
+│   │   └── (ícones diversos)
+│   └── categorias/
+│       └── (imagens das categorias)
+│
+└── README.md

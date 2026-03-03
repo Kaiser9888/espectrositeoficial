@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Espectro Bikes</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-imperial">ESPECTRO</span>
+                    <span class="logo-sub">BIKES</span>
+                </a>
+                
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar bikes, peças, acessórios...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="perfil.html" class="user-icon active">
+                        <i class="far fa-user"></i>
+                        <span>Perfil</span>
+                    </a>
+                    <a href="carrinho.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrinho</span>
+                        <span class="cart-badge" id="cartBadge">2</span>
+                    </a>
+                    <a href="mensagens.html" class="messages-icon">
+                        <i class="far fa-envelope"></i>
+                        <span>Mensagens</span>
+                        <span class="msg-badge" id="msgBadge">3</span>
+                    </a>
+                    <div class="notification-icon" id="notificationIcon">
+                        <i class="far fa-bell"></i>
+                        <span>Notificações</span>
+                        <span class="notif-badge" id="notifBadge">5</span>
+                    </div>
+                </div>
+                
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li class="active">Meu perfil</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="perfil-page">
+        <div class="container">
+            <div class="perfil-header">
+                <div class="perfil-capa">
+                    <img src="assets/banners/perfil-capa.jpg" alt="Capa do perfil">
+                    <button class="btn-editar-capa"><i class="fas fa-camera"></i></button>
+                </div>
+                
+                <div class="perfil-info-header">
+                    <div class="perfil-avatar">
+                        <img src="assets/icons/avatar-user.jpg" alt="Avatar">
+                        <button class="btn-editar-avatar"><i class="fas fa-camera"></i></button>
+                    </div>
+                    
+                    <div class="perfil-titulo">
+                        <h1>João Silva</h1>
+                        <p class="perfil-membro">Membro desde Março 2025</p>
+                        <div class="perfil-badges">
+                            <span class="badge-verificado"><i class="fas fa-check-circle"></i> Comprador verificado</span>
+                            <span class="badge-vendedor"><i class="fas fa-store"></i> Vendedor</span>
+                        </div>
+                    </div>
+                    
+                    <div class="perfil-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">47</span>
+                            <span class="stat-label">Compras</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Vendas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">4.8</span>
+                            <span class="stat-label">Avaliação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABS DO PERFIL -->
+            <div class="perfil-tabs">
+                <button class="perfil-tab active" data-tab="visao-geral">
+                    <i class="fas fa-home"></i> Visão geral
+                </button>
+                <button class="perfil-tab" data-tab="compras">
+                    <i class="fas fa-shopping-bag"></i> Compras
+                </button>
+                <button class="perfil-tab" data-tab="vendas">
+                    <i class="fas fa-store"></i> Vendas
+                </button>
+                <button class="perfil-tab" data-tab="produtos">
+                    <i class="fas fa-tag"></i> Meus produtos
+                </button>
+                <button class="perfil-tab" data-tab="financeiro">
+                    <i class="fas fa-dollar-sign"></i> Financeiro
+                </button>
+                <button class="perfil-tab" data-tab="dados">
+                    <i class="fas fa-user-cog"></i> Dados pessoais
+                </button>
+                <button class="perfil-tab" data-tab="documentos">
+                    <i class="fas fa-file-alt"></i> Documentos
+                </button>
+            </div>
+
+            <!-- CONTEÚDO DAS TABS -->
+            <div class="perfil-content">
+                <!-- TAB VISÃO GERAL -->
+                <div class="tab-content active" id="visao-geral">
+                    <div class="dashboard-grid">
+                        <!-- Card de resumo -->
+                        <div class="dashboard-card resumo-card">
+                            <h3><i class="fas fa-chart-line"></i> Resumo da conta</h3>
+                            <div class="resumo-stats">
+                                <div class="resumo-item">
+                                    <span class="resumo-label">A receber</span>
+                                    <span class="resumo-value positivo">R$ 1.234,56</span>
+                                </div>
+                                <div class="resumo-item">
+                                    <span class="resumo-label">A pagar</span>
+                                    <span class="resumo-value negativo">R$ 89,90</span>
+                                </div>
+                                <div class="resumo-item">
+                                    <span class="resumo-label">Saldo disponível</span>
+                                    <span class="resumo-value total">R$ 1.144,66</span>
+                                </div>
+                            </div>
+                            <button class="btn-outline btn-block">Solicitar saque</button>
+                        </div>
+
+                        <!-- Últimas compras -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-clock"></i> Últimas compras</h3>
+                                <a href="#" class="btn-link" data-tab="compras">Ver todas</a>
+                            </div>
+                            <div class="ultimas-compras">
+                                <div class="compra-item">
+                                    <img src="assets/produtos/bike1.jpg" alt="Produto">
+                                    <div class="compra-info">
+                                        <h4>Mountain Bike Caloi Elite</h4>
+                                        <span class="compra-status entregue">Entregue</span>
+                                    </div>
+                                    <span class="compra-data">há 2 dias</span>
+                                </div>
+                                <div class="compra-item">
+                                    <img src="assets/produtos/capacete1.jpg" alt="Produto">
+                                    <div class="compra-info">
+                                        <h4>Capacete Giro Syntax</h4>
+                                        <span class="compra-status caminho">A caminho</span>
+                                    </div>
+                                    <span class="compra-data">há 5 dias</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Últimas vendas (se for vendedor) -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-tag"></i> Últimas vendas</h3>
+                                <a href="#" class="btn-link" data-tab="vendas">Ver todas</a>
+                            </div>
+                            <div class="ultimas-vendas">
+                                <div class="venda-item">
+                                    <img src="assets/produtos/quadro1.jpg" alt="Produto">
+                                    <div class="venda-info">
+                                        <h4>Quadro Specialized</h4>
+                                        <span class="venda-status pago">Pago</span>
+                                    </div>
+                                    <span class="venda-valor">R$ 899,90</span>
+                                </div>
+                                <div class="venda-item">
+                                    <img src="assets/produtos/pneu1.jpg" alt="Produto">
+                                    <div class="venda-info">
+                                        <h4>Pneu Kenda 29</h4>
+                                        <span class="venda-status enviado">Enviado</span>
+                                    </div>
+                                    <span class="venda-valor">R$ 149,90</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico de atividades -->
+                        <div class="dashboard-card chart-card">
+                            <h3><i class="fas fa-chart-bar"></i> Atividade mensal</h3>
+                            <canvas id="atividadeChart"></canvas>
+                        </div>
+
+                        <!-- Avaliações recentes -->
+                        <div class="dashboard-card">
+                            <h3><i class="fas fa-star"></i> Avaliações recentes</h3>
+                            <div class="avaliacoes-recentes">
+                                <div class="avaliacao-mini">
+                                    <div class="avaliador">
+                                        <img src="assets/icons/avatar-user2.jpg" alt="Avatar">
+                                        <div>
+                                            <strong>Maria Silva</strong>
+                                            <div class="estrelas-mini">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>Ótimo vendedor, produto conforme descrito!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notificações não lidas -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-bell"></i> Notificações</h3>
+                                <a href="#" class="btn-link">Ver todas</a>
+                            </div>
+                            <div class="notificacoes-lista">
+                                <div class="notificacao-item nao-lida">
+                                    <i class="fas fa-tag"></i>
+                                    <div>
+                                        <p>Promoção relâmpago: 20% off em capacetes</p>
+                                        <small>há 10 minutos</small>
+                                    </div>
+                                </div>
+                                <div class="notificacao-item">
+                                    <i class="fas fa-box"></i>
+                                    <div>
+                                        <p>Seu pedido #12345 foi enviado</p>
+                                        <small>há 2 horas</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB COMPRAS -->
+                <div class="tab-content" id="compras">
+                    <div class="compras-header">
+                        <h2><i class="fas fa-shopping-bag"></i> Minhas compras</h2>
+                        <div class="compras-filtros">
+                            <select id="filtroStatus">
+                                <option value="todos">Todos os status</option>
+                                <option value="pendente">Pendente</option>
+                                <option value="pago">Pago</option>
+                                <option value="separacao">Em separação</option>
+                                <option value="enviado">Enviado</option>
+                                <option value="entregue">Entregue</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                            <input type="text" placeholder="Buscar compra...">
+                        </div>
+                    </div>
+
+                    <div class="compras-lista">
+                        <!-- Pedido 1 -->
+                        <div class="pedido-card">
+                            <div class="pedido-header">
+                                <div class="pedido-info">
+                                    <span class="pedido-numero">Pedido #ESP-123456</span>
+                                    <span class="pedido-data">Realizado em 25/03/2026</span>
+                                </div>
+                                <div class="pedido-status entregue">Entregue</div>
+                            </div>
+                            
+                            <div class="pedido-produtos">
+                                <div class="pedido-produto">
+                                    <img src="assets/produtos/bike1.jpg" alt="Produto">
+                                    <div class="produto-detalhes">
+                                        <h4>Mountain Bike Caloi Elite</h4>
+                                        <p>Vendedor: Bike Shop Brasil</p>
+                                        <span class="produto-qtd">1x R$ 1.899,90</span>
+                                    </div>
+                                    <div class="produto-acoes">
+                                        <button class="btn-outline btn-small">Comprar novamente</button>
+                                        <button class="btn-link btn-small">Avaliar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pedido-footer">
+                                <div class="pedido-total">
+                                    <span>Total: <strong>R$ 1.899,90</strong></span>
+                                    <span>Forma de pagamento: Cartão de crédito</span>
+                                </div>
+                                <div class="pedido-links">
+                                    <a href="#" class="btn-link">Ver detalhes</a>
+                                    <a href="#" class="btn-link">Acompanhar entrega</a>
+                                    <a href="#" class="btn-link">Falar com vendedor</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pedido 2 -->
+                        <div class="pedido-card">
+                            <div class="pedido-header">
+                                <div class="pedido-info">
+                                    <span class="pedido-numero">Pedido #ESP-123457</span>
+                                    <span class="pedido-data">Realizado em 20/03/2026</span>
+                                </div>
+                                <div class="pedido-status caminho">A caminho</div>
+                            </div>
+                            
+                            <div class="pedido-produtos">
+                                <div class="pedido-produto">
+                                    <img src="assets/produtos/capacete1.jpg" alt="Produto">
+                                    <div class="produto-detalhes">
+                                        <h4>Capacete Giro Syntax MIPS</h4>
+                                        <p>Vendedor: Capacetes Pro</p>
+                                        <span class="produto-qtd">2x R$ 299,90</span>
+                                    </div>
+                                    <div class="produto-acoes">
+                                        <button class="btn-outline btn-small">Comprar novamente</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pedido-footer">
+                                <div class="pedido-total">
+                                    <span>Total: <strong>R$ 599,80</strong></span>
+                                    <span>Forma de pagamento: Pix</span>
+                                </div>
+                                <div class="pedido-links">
+                                    <a href="#" class="btn-link">Ver detalhes</a>
+                                    <a href="#" class="btn-link">Acompanhar entrega</a>
+                                    <a href="#" class="btn-link">Falar com vendedor</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paginacao">
+                        <button class="btn-outline" disabled><i class="fas fa-chevron-left"></i></button>
+                        <span class="pagina-atual">1</span>
+                        <button class="btn-outline">2</button>
+                        <button class="btn-outline">3</button>
+                        <button class="btn-outline"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- TAB VENDAS -->
+                <div class="tab-content" id="vendas">
+                    <div class="vendas-header">
+                        <h2><i class="fas fa-store"></i> Minhas vendas</h2>
+                        <div class="vendas-resumo">
+                            <div class="resumo-item">
+                                <span>Vendas no mês:</span>
+                                <strong>R$ 1.049,80</strong>
+                            </div>
+                            <div class="resumo-item">
+                                <span>Comissão:</span>
+                                <strong>- R$ 104,98</strong>
+                            </div>
+                            <div class="resumo-item">
+                                <span>A receber:</span>
+                                <strong class="positivo">R$ 944,82</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vendas-lista">
+                        <!-- Venda 1 -->
+                        <div class="venda-card">
+                            <div class="venda-header">
+                                <span class="venda-numero">Venda #ESP-123458</span>
+                                <span class="venda-data">25/03/2026</span>
+                                <span class="venda-status pago">Pago</span>
+                            </div>
+                            
+                            <div class="venda-produto">
+                                <img src="assets/produtos/quadro1.jpg" alt="Produto">
+                                <div class="produto-info">
+                                    <h4>Quadro Specialized Aluminium</h4>
+                                    <p>Comprador: Carlos Santos</p>
+                                    <span class="produto-qtd">1 unidade</span>
+                                </div>
+                                <div class="produto-valor">
+                                    <span class="valor-total">R$ 899,90</span>
+                                    <span class="valor-comissao">Comissão: -R$ 89,99</span>
+                                    <span class="valor-receber">Você recebe: R$ 809,91</span>
+                                </div>
+                            </div>
+                            
+                            <div class="venda-acoes">
+                                <button class="btn-outline btn-small" onclick="mudarStatus('enviado')">
+                                    <i class="fas fa-truck"></i> Marcar como enviado
+                                </button>
+                                <button class="btn-outline btn-small">
+                                    <i class="fas fa-barcode"></i> Código de rastreio
+                                </button>
+                                <button class="btn-link btn-small">Falar com comprador</button>
+                            </div>
+                        </div>
+
+                        <!-- Venda 2 -->
+                        <div class="venda-card">
+                            <div class="venda-header">
+                                <span class="venda-numero">Venda #ESP-123459</span>
+                                <span class="venda-data">24/03/2026</span>
+                                <span class="venda-status aguardando">Aguardando pagamento</span>
+                            </div>
+                            
+                            <div class="venda-produto">
+                                <img src="assets/produtos/pneu1.jpg" alt="Produto">
+                                <div class="produto-info">
+                                    <h4>Pneu Kenda 29x2.1</h4>
+                                    <p>Comprador: Ana Paula</p>
+                                    <span class="produto-qtd">2 unidades</span>
+                                </div>
+                                <div class="produto-valor">
+                                    <span class="valor-total">R$ 149,90</span>
+                                    <span class="valor-comissao">Comissão: -R$ 14,99</span>
+                                    <span class="valor-receber">Você recebe: R$ 134,91</span>
+                                </div>
+                            </div>
+                            
+                            <div class="venda-acoes">
+                                <span class="status-msg">Aguardando confirmação de pagamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB MEUS PRODUTOS -->
+                <div class="tab-content" id="produtos">
+                    <div class="produtos-header">
+                        <h2><i class="fas fa-tag"></i> Meus produtos anunciados</h2>
+                        <a href="cadastro-produto.html" class="btn-dourado">
+                            <i class="fas fa-plus"></i> Novo anúncio
+                        </a>
+                    </div>
+
+                    <div class="meus-produtos-grid">
+                        <!-- Produto 1 -->
+                        <div class="meu-produto-card">
+                            <div class="produto-imagem">
+                                <img src="assets/produtos/quadro1.jpg" alt="Produto">
+                                <span class="produto-status ativo">Ativo</span>
+                            </div>
+                            <div class="produto-info">
+                                <h3>Quadro Specialized Aluminium</h3>
+                                <div class="produto-preco">R$ 899,90</div>
+                                <div class="produto-estats">
+                                    <span><i class="fas fa-eye"></i> 234 visualizações</span>
+                                    <span><i class="fas fa-heart"></i> 12 favoritos</span>
+                                </div>
+                                <div class="produto-acoes">
+                                    <button class="btn-outline btn-small" onclick="editarProduto(1)">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                    <button class="btn-outline btn-small" onclick="destacarProduto(1)">
+                                        <i class="fas fa-star"></i> Destacar
+                                    </button>
+                                    <button class="btn-link btn-small" onclick="pausarProduto(1)">
+                                        <i class="fas fa-pause"></i> Pausar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 2 -->
+                        <div class="meu-produto-card">
+                            <div class="produto-imagem">
+                                <img src="assets/produtos/pneu1.jpg" alt="Produto">
+                                <span class="produto-status ativo">Ativo</span>
+                            </div>
+                            <div class="produto-info">
+                                <h3>Pneu Kenda 29x2.1 (par)</h3>
+                                <div class="produto-preco">R$ 149,90</div>
+                                <div class="produto-estats">
+                                    <span><i class="fas fa-eye"></i> 156 visualizações</span>
+                                    <span><i class="fas fa-heart"></i> 8 favoritos</span>
+                                </div>
+                                <div class="produto-acoes">
+                                    <button class="btn-outline btn-small"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="btn-outline btn-small"><i class="fas fa-star"></i> Destacar</button>
+                                    <button class="btn-link btn-small"><i class="fas fa-pause"></i> Pausar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 3 (destaque) -->
+                        <div class="meu-produto-card destaque">
+                            <div class="produto-imagem">
+                                <img src="assets/produtos/bike2.jpg" alt="Produto">
+                                <span class="produto-status destaque-badge">Destaque</span>
+                            </div>
+                            <div class="produto-info">
+                                <h3>Mountain Bike Sense Ride</h3>
+                                <div class="produto-preco">R$ 2.299,90</div>
+                                <div class="produto-estats">
+                                    <span><i class="fas fa-eye"></i> 567 visualizações</span>
+                                    <span><i class="fas fa-heart"></i> 34 favoritos</span>
+                                </div>
+                                <div class="produto-destaque-info">
+                                    <i class="fas fa-clock"></i> Destacado por mais 5 dias
+                                </div>
+                                <div class="produto-acoes">
+                                    <button class="btn-outline btn-small"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="btn-outline btn-small"><i class="fas fa-star"></i> Renovar</button>
+                                    <button class="btn-link btn-small"><i class="fas fa-pause"></i> Pausar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB FINANCEIRO -->
+                <div class="tab-content" id="financeiro">
+                    <div class="financeiro-header">
+                        <h2><i class="fas fa-dollar-sign"></i> Financeiro</h2>
+                        <div class="financeiro-periodo">
+                            <select id="periodo">
+                                <option value="30">Últimos 30 dias</option>
+                                <option value="90">Últimos 90 dias</option>
+                                <option value="365">Último ano</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="financeiro-cards">
+                        <div class="financeiro-card">
+                            <div class="card-icon verde">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">Receitas</span>
+                                <span class="card-value">R$ 3.456,78</span>
+                            </div>
+                        </div>
+                        
+                        <div class="financeiro-card">
+                            <div class="card-icon vermelho">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">Despesas (comissões)</span>
+                                <span class="card-value">-R$ 345,68</span>
+                            </div>
+                        </div>
+                        
+                        <div class="financeiro-card">
+                            <div class="card-icon azul">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">Saldo disponível</span>
+                                <span class="card-value">R$ 3.111,10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="financeiro-card">
+                            <div class="card-icon roxo">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">A receber</span>
+                                <span class="card-value">R$ 1.234,56</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="financeiro-grafico">
+                        <canvas id="financeiroChart"></canvas>
+                    </div>
+
+                    <div class="financeiro-tabela">
+                        <h3>Últimas transações</h3>
+                        <table class="tabela-transacoes">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Descrição</th>
+                                    <th>Tipo</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>25/03/2026</td>
+                                    <td>Venda #ESP-123458</td>
+                                    <td><span class="tipo-credito">Crédito</span></td>
+                                    <td class="valor positivo">R$ 809,91</td>
+                                    <td><span class="status-concluido">Concluído</span></td>
+                                </tr>
+                                <tr>
+                                    <td>24/03/2026</td>
+                                    <td>Comissão - Venda #ESP-123458</td>
+                                    <td><span class="tipo-debito">Débito</span></td>
+                                    <td class="valor negativo">-R$ 89,99</td>
+                                    <td><span class="status-concluido">Concluído</span></td>
+                                </tr>
+                                <tr>
+                                    <td>23/03/2026</td>
+                                    <td>Destaque produto (7 dias)</td>
+                                    <td><span class="tipo-debito">Débito</span></td>
+                                    <td class="valor negativo">-R$ 9,90</td>
+                                    <td><span class="status-concluido">Concluído</span></td>
+                                </tr>
+                                <tr>
+                                    <td>22/03/2026</td>
+                                    <td>Saque realizado</td>
+                                    <td><span class="tipo-debito">Débito</span></td>
+                                    <td class="valor negativo">-R$ 500,00</td>
+                                    <td><span class="status-concluido">Concluído</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="financeiro-saque">
+                        <h3>Solicitar saque</h3>
+                        <div class="saque-form">
+                            <div class="form-group">
+                                <label>Valor do saque</label>
+                                <input type="text" class="preco-mask" placeholder="0,00">
+                            </div>
+                            <div class="form-group">
+                                <label>Conta bancária</label>
+                                <select>
+                                    <option>Banco do Brasil - Ag: 1234-5 Conta: 12345-6</option>
+                                    <option>Nubank - Ag: 0001 Conta: 98765-4</option>
+                                </select>
+                                <a href="#" class="btn-link">Nova conta bancária</a>
+                            </div>
+                            <button class="btn-dourado">Solicitar saque</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB DADOS PESSOAIS -->
+                <div class="tab-content" id="dados">
+                    <h2><i class="fas fa-user-cog"></i> Dados pessoais</h2>
+                    
+                    <form class="dados-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome completo</label>
+                                <input type="text" value="João Silva" disabled>
+                                <small>Para alterar, entre em contato com o suporte</small>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input type="email" value="joao.silva@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="text" class="tel-mask" value="(11) 99999-9999">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>CPF</label>
+                                <input type="text" value="123.456.789-00" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Data de nascimento</label>
+                                <input type="date" value="1990-01-01">
+                            </div>
+                        </div>
+
+                        <h3>Endereço padrão</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>CEP</label>
+                                <input type="text" class="cep-mask" value="01234-567">
+                            </div>
+                            <div class="form-group">
+                                <label>Rua</label>
+                                <input type="text" value="Rua das Bicicletas">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Número</label>
+                                <input type="text" value="123">
+                            </div>
+                            <div class="form-group">
+                                <label>Complemento</label>
+                                <input type="text" value="Apto 45">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Bairro</label>
+                                <input type="text" value="Centro">
+                            </div>
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input type="text" value="São Paulo">
+                            </div>
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <select>
+                                    <option value="SP" selected>São Paulo</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3>Segurança</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Senha atual</label>
+                                <input type="password" placeholder="********">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nova senha</label>
+                                <input type="password" placeholder="Mínimo 8 caracteres">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar nova senha</label>
+                                <input type="password" placeholder="********">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-dourado">Salvar alterações</button>
+                            <button type="button" class="btn-outline">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TAB DOCUMENTOS -->
+                <div class="tab-content" id="documentos">
+                    <h2><i class="fas fa-file-alt"></i> Documentos para venda</h2>
+                    
+                    <div class="documentos-status">
+                        <div class="status-card">
+                            <i class="fas fa-check-circle verde"></i>
+                            <div>
+                                <h3>Status da verificação</h3>
+                                <p>Seus documentos foram aprovados! Você já pode vender.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="documentos-lista">
+                        <div class="documento-item">
+                            <div class="documento-info">
+                                <i class="fas fa-id-card"></i>
+                                <div>
+                                    <h4>Documento de identidade</h4>
+                                    <p>Enviado em 15/03/2026</p>
+                                </div>
+                            </div>
+                            <span class="documento-status aprovado">Aprovado</span>
+                        </div>
+
+                        <div class="documento-item">
+                            <div class="documento-info">
+                                <i class="fas fa-file-invoice"></i>
+                                <div>
+                                    <h4>Comprovante de residência</h4>
+                                    <p>Enviado em 15/03/2026</p>
+                                </div>
+                            </div>
+                            <span class="documento-status aprovado">Aprovado</span>
+                        </div>
+
+                        <div class="documento-item">
+                            <div class="documento-info">
+                                <i class="fas fa-building"></i>
+                                <div>
+                                    <h4>Comprovante bancário</h4>
+                                    <p>Enviado em 15/03/2026</p>
+                                </div>
+                            </div>
+                            <span class="documento-status aprovado">Aprovado</span>
+                        </div>
+                    </div>
+
+                    <div class="documentos-upload">
+                        <h3>Enviar novo documento</h3>
+                        <p>Se precisar atualizar algum documento, envie abaixo</p>
+                        
+                        <div class="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Arraste ou clique para enviar</p>
+                            <span>PDF, JPG ou PNG (max. 10MB)</span>
+                            <input type="file" accept=".pdf,.jpg,.jpeg,.png">
+                        </div>
+                        
+                        <button class="btn-dourado">Enviar documento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DE DESTAQUE -->
+    <div class="modal" id="destaqueModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Destacar produto</h2>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Aumente a visibilidade do seu produto aparecendo no topo das buscas!</p>
+                
+                <div class="destaque-opcoes">
+                    <label class="destaque-card">
+                        <input type="radio" name="destaqueModal" value="7dias">
+                        <div class="destaque-info">
+                            <h4>7 dias</h4>
+                            <p class="preco">R$ 9,90</p>
+                            <small>Apareça no topo por 7 dias</small>
+                        </div>
+                    </label>
+                    
+                    <label class="destaque-card">
+                        <input type="radio" name="destaqueModal" value="30dias">
+                        <div class="destaque-info">
+                            <h4>30 dias</h4>
+                            <p class="preco">R$ 29,90</p>
+                            <small>Melhor custo-benefício</small>
+                        </div>
+                    </label>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button class="btn-outline" onclick="fecharModal()">Cancelar</button>
+                    <button class="btn-dourado" onclick="confirmarDestaque()">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <!-- mesmo footer do index -->
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/notificacoes.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tabs do perfil
+            const tabs = document.querySelectorAll('.perfil-tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    const tabId = this.dataset.tab;
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Links que mudam de tab
+            document.querySelectorAll('[data-tab]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.dataset.tab;
+                    
+                    // Ativar tab correspondente
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    document.querySelector(`.perfil-tab[data-tab="${tabId}"]`).classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Gráfico de atividade
+            const ctx = document.getElementById('atividadeChart')?.getContext('2d');
+            if(ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                        datasets: [{
+                            label: 'Compras',
+                            data: [5, 8, 12, 15, 20, 18],
+                            borderColor: '#8B0000',
+                            backgroundColor: 'rgba(139,0,0,0.1)',
+                            tension: 0.4
+                        }, {
+                            label: 'Vendas',
+                            data: [2, 4, 6, 8, 10, 12],
+                            borderColor: '#FFD700',
+                            backgroundColor: 'rgba(255,215,0,0.1)',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+
+            // Gráfico financeiro
+            const ctx2 = document.getElementById('financeiroChart')?.getContext('2d');
+            if(ctx2) {
+                new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                        datasets: [{
+                            label: 'Receitas',
+                            data: [800, 950, 1100, 1300],
+                            backgroundColor: '#8B0000'
+                        }]
+                    }
+                });
+            }
+
+            // Funções de produto
+            window.editarProduto = function(id) {
+                window.location.href = `cadastro-produto.html?id=${id}`;
+            };
+
+            window.destacarProduto = function(id) {
+                document.getElementById('destaqueModal').style.display = 'flex';
+            };
+
+            window.pausarProduto = function(id) {
+                if(confirm('Deseja pausar este anúncio?')) {
+                    alert('Produto pausado com sucesso!');
+                }
+            };
+
+            window.confirmarDestaque = function() {
+                const selecionado = document.querySelector('input[name="destaqueModal"]:checked');
+                if(selecionado) {
+                    alert('Produto destacado com sucesso!');
+                    fecharModal();
+                } else {
+                    alert('Selecione uma opção');
+                }
+            };
+
+            window.fecharModal = function() {
+                document.getElementById('destaqueModal').style.display = 'none';
+            };
+
+            // Fechar modal com clique no X
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', fecharModal);
+            });
+
+            // Máscaras
+            function aplicarMascara(input, tipo) {
+                if(!input) return;
+                
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    if(tipo === 'tel') {
+                        if(value.length > 2 && value.length <= 6) {
+                            value = '(' + value.substring(0,2) + ') ' + value.substring(2);
+                        } else if(value.length > 6) {
+                            value = '(' + value.substring(0,2) + ') ' + value.substring(2,7) + '-' + value.substring(7,11);
+                        }
+                    } else if(tipo === 'cep') {
+                        if(value.length > 5) {
+                            value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+                        }
+                    }
+                    
+                    e.target.value = value;
+                });
+            }
+
+            aplicarMascara(document.querySelector('.tel-mask'), 'tel');
+            aplicarMascara(document.querySelector('.cep-mask'), 'cep');
+        });
+
+        // Função para mudar status do pedido (vendedor)
+        function mudarStatus(novoStatus) {
+            const statusMap = {
+                'enviado': 'Pedido marcado como enviado! Não esqueça de adicionar o código de rastreio.'
+            };
+            alert(statusMap[novoStatus] || 'Status atualizado!');
+        }
+    </script>
+</body>
+</html>

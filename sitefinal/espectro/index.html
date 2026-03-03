@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espectro Bikes - Marketplace do Mundo Bike</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon (opcional) -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+</head>
+<body>
+    <!-- HEADER COM MENU IMPERIAL -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <span class="logo-imperial">ESPECTRO</span>
+                    <span class="logo-sub">BIKES</span>
+                </a>
+                
+                <!-- Busca -->
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar bikes, peças, acessórios...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <!-- Ícones do usuário -->
+                <div class="user-actions">
+                    <a href="perfil.html" class="user-icon" id="profileLink">
+                        <i class="far fa-user"></i>
+                        <span>Perfil</span>
+                    </a>
+                    <a href="carrinho.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrinho</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="mensagens.html" class="messages-icon">
+                        <i class="far fa-envelope"></i>
+                        <span>Mensagens</span>
+                        <span class="msg-badge" id="msgBadge">0</span>
+                    </a>
+                    <div class="notification-icon" id="notificationIcon">
+                        <i class="far fa-bell"></i>
+                        <span>Notificações</span>
+                        <span class="notif-badge" id="notifBadge">3</span>
+                        
+                        <!-- Dropdown de notificações -->
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-header">
+                                <h4>Notificações</h4>
+                                <span class="mark-read">Marcar todas como lidas</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item nova">
+                                    <i class="fas fa-tag"></i>
+                                    <div class="notif-content">
+                                        <p><strong>Promoção!</strong> Capacetes com 20% OFF</p>
+                                        <span class="notif-time">há 5 min</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <i class="fas fa-box"></i>
+                                    <div class="notif-content">
+                                        <p>Seu pedido #1234 foi <strong>enviado</strong></p>
+                                        <span class="notif-time">há 2h</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <i class="fas fa-star"></i>
+                                    <div class="notif-content">
+                                        <p>Você recebeu uma <strong>avaliação</strong></p>
+                                        <span class="notif-time">há 1 dia</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="notificacoes.html">Ver todas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu hamburguer (mobile) -->
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <!-- Menu principal -->
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categorias <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-col">
+                                    <h4>Bicicletas</h4>
+                                    <a href="categoria.html?tipo=mountain">Mountain Bike</a>
+                                    <a href="categoria.html?tipo=speed">Speed</a>
+                                    <a href="categoria.html?tipo=bmx">BMX</a>
+                                    <a href="categoria.html?tipo=urbana">Urbana</a>
+                                    <a href="categoria.html?tipo=eletrica">Elétrica</a>
+                                </div>
+                                <div class="dropdown-col">
+                                    <h4>Componentes</h4>
+                                    <a href="categoria.html?categoria=rodas">Rodas</a>
+                                    <a href="categoria.html?categoria=transmissao">Transmissão</a>
+                                    <a href="categoria.html?categoria=freios">Freios</a>
+                                    <a href="categoria.html?categoria=suspensao">Suspensão</a>
+                                </div>
+                                <div class="dropdown-col">
+                                    <h4>Acessórios</h4>
+                                    <a href="categoria.html?categoria=capacetes">Capacetes</a>
+                                    <a href="categoria.html?categoria=luvas">Luvas</a>
+                                    <a href="categoria.html?categoria=pedais">Pedais</a>
+                                    <a href="categoria.html?categoria=iluminacao">Iluminação</a>
+                                </div>
+                                <div class="dropdown-col">
+                                    <h4>Vestuário</h4>
+                                    <a href="categoria.html?categoria=camisas">Camisas</a>
+                                    <a href="categoria.html?categoria=calcoes">Calções</a>
+                                    <a href="categoria.html?categoria=sapatilhas">Sapatilhas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="duvidas.html">Dúvidas</a></li>
+                    <li><a href="videos.html">Vídeos & Edits</a></li>
+                    <li><a href="cadastro-produto.html" class="btn-vender"><i class="fas fa-plus-circle"></i> Vender</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL (IMPERIAL) -->
+    <section class="banner-principal">
+        <div class="banner-slider" id="bannerSlider">
+            <div class="banner-slide active" style="background: linear-gradient(90deg, var(--imperio-vermelho) 0%, rgba(0,0,0,0.7) 100%), url('assets/banners/banner1.jpg') center/cover;">
+                <div class="container">
+                    <div class="banner-content">
+                        <span class="banner-tag">Lançamento</span>
+                        <h1>Downhill Extreme</h1>
+                        <p>Suspensões e quadros com tecnologia de ponta para você dominar as montanhas</p>
+                        <div class="banner-buttons">
+                            <a href="categoria.html?modalidade=downhill" class="btn-dourado">Conferir <i class="fas fa-arrow-right"></i></a>
+                            <a href="categoria.html?modalidade=downhill&condicao=oferta" class="btn-outline-dourado">Ofertas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="banner-slide" style="background: linear-gradient(90deg, var(--imperio-vermelho) 0%, rgba(0,0,0,0.7) 100%), url('assets/banners/banner2.jpg') center/cover;">
+                <div class="container">
+                    <div class="banner-content">
+                        <span class="banner-tag">Speed</span>
+                        <h1>Performance Máxima</h1>
+                        <p>Bikes speed de carbono e componentes aerodinâmicos para quem busca velocidade</p>
+                        <div class="banner-buttons">
+                            <a href="categoria.html?modalidade=speed" class="btn-dourado">Conferir</a>
+                            <a href="categoria.html?modalidade=speed&condicao=novo" class="btn-outline-dourado">Novidades</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="banner-slide" style="background: linear-gradient(90deg, var(--imperio-vermelho) 0%, rgba(0,0,0,0.7) 100%), url('assets/banners/banner3.jpg') center/cover;">
+                <div class="container">
+                    <div class="banner-content">
+                        <span class="banner-tag">BMX</span>
+                        <h1>Estilo Livre</h1>
+                        <p>Quadros reforçados, guidões e rodas para você mandar suas manobras</p>
+                        <div class="banner-buttons">
+                            <a href="categoria.html?modalidade=bmx" class="btn-dourado">Explorar</a>
+                            <a href="categoria.html?modalidade=bmx&condicao=promocao" class="btn-outline-dourado">Promoções</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles do banner -->
+            <div class="banner-controls">
+                <button class="banner-prev" id="bannerPrev"><i class="fas fa-chevron-left"></i></button>
+                <div class="banner-dots" id="bannerDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="banner-next" id="bannerNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIAS RÁPIDAS -->
+    <section class="categorias-rapidas">
+        <div class="container">
+            <h2 class="section-title">Navegue por <span class="destaque-dourado">Modalidades</span></h2>
+            <div class="categorias-grid">
+                <a href="categoria.html?modalidade=downhill" class="categoria-card">
+                    <div class="categoria-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Downhill</h3>
+                    <span>120 produtos</span>
+                </a>
+                <a href="categoria.html?modalidade=speed" class="categoria-card">
+                    <div class="categoria-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Speed</h3>
+                    <span>85 produtos</span>
+                </a>
+                <a href="categoria.html?modalidade=bmx" class="categoria-card">
+                    <div class="categoria-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <h3>BMX</h3>
+                    <span>64 produtos</span>
+                </a>
+                <a href="categoria.html?modalidade=mtb" class="categoria-card">
+                    <div class="categoria-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Mountain Bike</h3>
+                    <span>156 produtos</span>
+                </a>
+                <a href="categoria.html?modalidade=urbana" class="categoria-card">
+                    <div class="categoria-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Urbana</h3>
+                    <span>92 produtos</span>
+                </a>
+                <a href="categoria.html?modalidade=pecas" class="categoria-card">
+                    <div class="categoria-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Peças</h3>
+                    <span>210 produtos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS PESQUISADOS RECENTEMENTE -->
+    <section class="produtos-recentes">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-history"></i> 
+                Pesquisados <span class="destaque-dourado">Recentemente</span>
+            </h2>
+            <div class="produtos-grid" id="recentProducts">
+                <!-- Grid será preenchido via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROMOCIONAL -->
+    <section class="banner-promo">
+        <div class="container">
+            <div class="promo-content" style="background: linear-gradient(135deg, var(--imperio-vermelho), #B22222);">
+                <div class="promo-text">
+                    <span class="promo-tag">Frete Grátis</span>
+                    <h2>Para compras acima de R$ 299</h2>
+                    <p>Válido para todo Brasil em produtos selecionados</p>
+                </div>
+                <div class="promo-countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="count-number">12</span>
+                        <span>Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="count-number">34</span>
+                        <span>Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="count-number">56</span>
+                        <span>Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVERSOS PRODUTOS -->
+    <section class="diversos-produtos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-bicycle"></i>
+                    Diversos <span class="destaque-dourado">Produtos</span>
+                </h2>
+                <div class="filtros-rapidos">
+                    <select id="categoriaFiltro">
+                        <option value="">Todas categorias</option>
+                        <option value="bikes">Bicicletas</option>
+                        <option value="quadros">Quadros</option>
+                        <option value="rodas">Rodas</option>
+                        <option value="transmissao">Transmissão</option>
+                        <option value="freios">Freios</option>
+                        <option value="acessorios">Acessórios</option>
+                    </select>
+                    <select id="ordenacao">
+                        <option value="relevancia">Mais relevantes</option>
+                        <option value="menor-preco">Menor preço</option>
+                        <option value="maior-preco">Maior preço</option>
+                        <option value="avaliacao">Melhor avaliação</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="produtos-grid" id="allProducts">
+                <!-- Grid será preenchido via JavaScript -->
+            </div>
+            
+            <div class="ver-mais">
+                <a href="categoria.html" class="btn-outline">Ver todos os produtos <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE DÚVIDAS RÁPIDAS -->
+    <section class="duvidas-rapidas">
+        <div class="container">
+            <div class="duvidas-wrapper">
+                <div class="duvidas-content">
+                    <h2>Dúvidas sobre <span class="destaque-dourado">bikes?</span></h2>
+                    <p>Tire suas dúvidas com nossa comunidade de especialistas</p>
+                    <a href="duvidas.html" class="btn-dourado">Acessar fórum <i class="fas fa-comments"></i></a>
+                </div>
+                <div class="duvidas-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1.234</span>
+                        <span>Perguntas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">567</span>
+                        <span>Especialistas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">89%</span>
+                        <span>Resolvidas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Fique por dentro das <span class="destaque-dourado">novidades</span></h2>
+                <p>Receba promoções exclusivas e lançamentos do mundo bike</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit" class="btn-dourado">Inscrever-se</button>
+                </form>
+                <small>Ao se inscrever, você aceita receber comunicações da Espectro Bikes</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER IMPERIAL -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-imperial">ESPECTRO</span>
+                        <span class="logo-sub">BIKES</span>
+                    </div>
+                    <p>O marketplace mais completo do mundo bike. Conectamos compradores e vendedores com segurança e qualidade.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Como vender</a></li>
+                        <li><a href="#">Segurança</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Ajuda</h4>
+                    <ul>
+                        <li><a href="#">Central de ajuda</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#">Termos de uso</a></li>
+                        <li><a href="#">Trocas e devoluções</a></li>
+                        <li><a href="#">Fale conosco</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Pagamento</h4>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fab fa-cc-elo"></i>
+                        <i class="fab fa-pix"></i>
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                    <h4 style="margin-top: 20px;">Selos de segurança</h4>
+                    <div class="security-seals">
+                        <img src="assets/icons/ssl.png" alt="SSL Secure">
+                        <img src="assets/icons/google-safe.png" alt="Google Safe">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Espectro Bikes. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Mapa do site</a>
+                    <a href="#">Política de cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/notificacoes.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/produto.js"></script>
+</body>
+</html>

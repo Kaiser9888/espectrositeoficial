@@ -1,0 +1,43 @@
+espectro-bikes/
+│
+├── index.html
+├── cadastro-produto.html
+├── perfil.html
+├── login.html
+├── produto.html
+├── carrinho.html
+├── categoria.html
+├── duvidas.html
+├── videos.html
+├── mensagens.html
+├── notificacoes.html
+├── checkout.html
+│
+├── css/
+│   ├── style.css (geral)
+│   ├── home.css
+│   ├── produto.css
+│   ├── cadastro.css
+│   └── responsivo.css
+│
+├── js/
+│   ├── main.js (geral, menu, notificações)
+│   ├── home.js (banners, produtos recentes, busca)
+│   ├── produto.js (detalhes, frete, avaliações)
+│   ├── carrinho.js (cálculos, frete)
+│   ├── cadastro-produto.js (upload imagens, validações)
+│   ├── filtros.js (busca avançada)
+│   ├── auth.js (login, cadastro, perfil)
+│   ├── mensagens.js (chat)
+│   ├── data.js (dados mockados para testes)
+│   └── api.js (preparado para fetch real - só trocar a baseURL)
+│
+├── assets/
+│   ├── images/
+│   │   ├── banners/
+│   │   ├── produtos/
+│   │   ├── icons/
+│   │   └── categorias/
+│   └── fonts/
+│
+└── README.md (instruções de integração com Spring Boot)

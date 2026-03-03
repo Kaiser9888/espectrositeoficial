@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto - Espectro Bikes</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER (mesmo do index) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-imperial">ESPECTRO</span>
+                    <span class="logo-sub">BIKES</span>
+                </a>
+                
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar bikes, peças, acessórios...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="perfil.html" class="user-icon">
+                        <i class="far fa-user"></i>
+                        <span>Perfil</span>
+                    </a>
+                    <a href="carrinho.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrinho</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="mensagens.html" class="messages-icon">
+                        <i class="far fa-envelope"></i>
+                        <span>Mensagens</span>
+                        <span class="msg-badge" id="msgBadge">0</span>
+                    </a>
+                    <div class="notification-icon" id="notificationIcon">
+                        <i class="far fa-bell"></i>
+                        <span>Notificações</span>
+                        <span class="notif-badge" id="notifBadge">3</span>
+                    </div>
+                </div>
+                
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categorias <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <!-- mesmo dropdown do index -->
+                        </div>
+                    </li>
+                    <li><a href="duvidas.html">Dúvidas</a></li>
+                    <li><a href="videos.html">Vídeos & Edits</a></li>
+                    <li><a href="cadastro-produto.html" class="btn-vender active"><i class="fas fa-plus-circle"></i> Vender</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li><a href="perfil.html">Meu perfil</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li class="active">Cadastrar produto</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="cadastro-produto">
+        <div class="container">
+            <div class="cadastro-header">
+                <h1><i class="fas fa-plus-circle"></i> Cadastrar novo produto</h1>
+                <p>Preencha todos os campos para anunciar seu produto no Espectro Bikes</p>
+            </div>
+
+            <!-- VERIFICAÇÃO DE VENDEDOR -->
+            <div class="vendedor-verificacao" id="vendedorVerificacao">
+                <div class="verificacao-card">
+                    <i class="fas fa-store"></i>
+                    <div class="verificacao-info">
+                        <h3>Você ainda não é vendedor</h3>
+                        <p>Para anunciar produtos, você precisa se tornar um vendedor verificada. É rápido e gratuito!</p>
+                    </div>
+                    <button class="btn-dourado" id="btnVirarVendedor">Quero vender</button>
+                </div>
+            </div>
+
+            <!-- MODAL DE VIRAR VENDEDOR (escondido inicialmente) -->
+            <div class="modal" id="vendedorModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Tornar-se vendedor</h2>
+                        <button class="modal-close"><i class="fas fa-times"></i></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="vendedor-steps">
+                            <div class="step active" data-step="1">
+                                <span class="step-number">1</span>
+                                <span class="step-title">Documentos</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step" data-step="2">
+                                <span class="step-number">2</span>
+                                <span class="step-title">Dados bancários</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step" data-step="3">
+                                <span class="step-number">3</span>
+                                <span class="step-title">Termos</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step" data-step="4">
+                                <span class="step-number">4</span>
+                                <span class="step-title">Análise</span>
+                            </div>
+                        </div>
+
+                        <!-- STEP 1: DOCUMENTOS -->
+                        <div class="step-content active" id="step1">
+                            <h3>Documentos para verificação</h3>
+                            
+                            <div class="form-group">
+                                <label>Tipo de pessoa</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="tipoPessoa" value="PF" checked> 
+                                        <span>Pessoa Física (CPF)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="tipoPessoa" value="PJ"> 
+                                        <span>Pessoa Jurídica (CNPJ)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="cpfGroup">
+                                <label>CPF <span class="required">*</span></label>
+                                <input type="text" id="cpf" placeholder="000.000.000-00" class="cpf-mask">
+                            </div>
+
+                            <div class="form-group hidden" id="cnpjGroup">
+                                <label>CNPJ <span class="optional">(opcional)</span></label>
+                                <input type="text" id="cnpj" placeholder="00.000.000/0000-00" class="cnpj-mask">
+                                <small>Caso tenha CNPJ, informe para emissão de notas fiscais</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nome completo / Razão social <span class="required">*</span></label>
+                                <input type="text" id="nomeCompleto" placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Comprovante de endereço <span class="required">*</span></label>
+                                <div class="upload-area" id="uploadEndereco">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Arraste ou clique para enviar</p>
+                                    <span>PDF, JPG ou PNG (max. 5MB)</span>
+                                    <input type="file" accept=".pdf,.jpg,.jpeg,.png" class="file-input">
+                                </div>
+                                <div class="file-preview" id="previewEndereco"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Foto do documento (RG/CNH) <span class="required">*</span></label>
+                                <div class="upload-area" id="uploadDocumento">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Arraste ou clique para enviar</p>
+                                    <span>JPG ou PNG (max. 5MB)</span>
+                                    <input type="file" accept=".jpg,.jpeg,.png" class="file-input">
+                                </div>
+                                <div class="file-preview" id="previewDocumento"></div>
+                            </div>
+
+                            <div class="step-buttons">
+                                <button class="btn-dourado" id="step1Next">Próximo</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: DADOS BANCÁRIOS -->
+                        <div class="step-content" id="step2">
+                            <h3>Dados bancários para recebimento</h3>
+                            
+                            <div class="form-group">
+                                <label>Banco <span class="required">*</span></label>
+                                <select id="banco">
+                                    <option value="">Selecione o banco</option>
+                                    <option value="001">Banco do Brasil</option>
+                                    <option value="237">Bradesco</option>
+                                    <option value="341">Itaú</option>
+                                    <option value="033">Santander</option>
+                                    <option value="104">Caixa Econômica</option>
+                                    <option value="260">Nubank</option>
+                                    <option value="077">Inter</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Agência <span class="required">*</span></label>
+                                    <input type="text" id="agencia" placeholder="0000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Dígito</label>
+                                    <input type="text" id="agenciaDigito" placeholder="0" maxlength="1">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Conta <span class="required">*</span></label>
+                                    <input type="text" id="conta" placeholder="00000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Dígito</label>
+                                    <input type="text" id="contaDigito" placeholder="0" maxlength="1">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tipo de conta <span class="required">*</span></label>
+                                <select id="tipoConta">
+                                    <option value="corrente">Conta Corrente</option>
+                                    <option value="poupanca">Conta Poupança</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Chave PIX (opcional)</label>
+                                <input type="text" id="chavePix" placeholder="CPF, e-mail, telefone ou chave aleatória">
+                                <small>Para recebimentos mais rápidos</small>
+                            </div>
+
+                            <div class="step-buttons">
+                                <button class="btn-outline" id="step2Back">Voltar</button>
+                                <button class="btn-dourado" id="step2Next">Próximo</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: TERMOS E COMISSÃO -->
+                        <div class="step-content" id="step3">
+                            <h3>Termos e condições de venda</h3>
+                            
+                            <div class="comissao-info">
+                                <h4>Comissão Espectro Bikes</h4>
+                                <div class="comissao-card">
+                                    <div class="comissao-item">
+                                        <span>Comissão padrão por venda:</span>
+                                        <strong>10%</strong>
+                                    </div>
+                                    <div class="comissao-item">
+                                        <span>Produto destacado (7 dias):</span>
+                                        <strong>R$ 9,90</strong>
+                                    </div>
+                                    <div class="comissao-item">
+                                        <span>Produto destacado (30 dias):</span>
+                                        <strong>R$ 29,90</strong>
+                                    </div>
+                                </div>
+                                <p class="comissao-exemplo">Exemplo: Uma venda de R$ 100,00 → você recebe R$ 90,00</p>
+                            </div>
+
+                            <div class="termos-box">
+                                <h4>Termos de uso para vendedores</h4>
+                                <div class="termos-texto">
+                                    <p>1. O vendedor é o único responsável pela veracidade das informações do produto.</p>
+                                    <p>2. O pagamento é processado pelo Espectro Bikes e repassado ao vendedor após confirmação.</p>
+                                    <p>3. Produtos vendidos devem ser enviados em até 2 dias úteis.</p>
+                                    <p>4. O vendedor deve fornecer código de rastreamento.</p>
+                                    <p>5. Trocas e devoluções seguem o código de defesa do consumidor.</p>
+                                    <p>6. A comissão é descontada automaticamente no momento da venda.</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="aceitoTermos">
+                                    <span>Li e aceito os termos e condições para vendedores</span>
+                                </label>
+                            </div>
+
+                            <div class="step-buttons">
+                                <button class="btn-outline" id="step3Back">Voltar</button>
+                                <button class="btn-dourado" id="step3Next" disabled>Avançar</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 4: ANÁLISE -->
+                        <div class="step-content" id="step4">
+                            <div class="analise-content">
+                                <i class="fas fa-clock"></i>
+                                <h3>Documentos enviados para análise!</h3>
+                                <p>Nossa equipe vai verificar seus documentos em até 24 horas úteis.</p>
+                                <p>Você receberá uma notificação assim que for aprovado.</p>
+                                <div class="analise-detalhes">
+                                    <div class="analise-item">
+                                        <span>Status:</span>
+                                        <strong class="status-pendente">Pendente</strong>
+                                    </div>
+                                    <div class="analise-item">
+                                        <span>Protocolo:</span>
+                                        <strong>ESP-2024-12345</strong>
+                                    </div>
+                                </div>
+                                <button class="btn-dourado" id="fecharModal">Entendi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO DE CADASTRO DE PRODUTO (aparece se for vendedor) -->
+            <form id="formCadastroProduto" class="form-cadastro-produto" style="display: none;">
+                <!-- Status de vendedor -->
+                <div class="vendedor-status">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Você está vendendo como: <strong>João Silva</strong></span>
+                    <span class="vendedor-badge">Vendedor verificado</span>
+                </div>
+
+                <!-- Upload de imagens -->
+                <div class="form-section">
+                    <h2><i class="fas fa-images"></i> Imagens do produto</h2>
+                    <p>Adicione até 8 imagens do seu produto. A primeira será a capa.</p>
+                    
+                    <div class="upload-multiplo" id="uploadMultiplo">
+                        <div class="upload-grid" id="uploadGrid">
+                            <div class="upload-box" id="addImageBox">
+                                <i class="fas fa-plus"></i>
+                                <span>Adicionar imagens</span>
+                                <input type="file" multiple accept="image/*" id="imageInput" style="display: none;">
+                            </div>
+                            <!-- Imagens serão adicionadas aqui via JS -->
+                        </div>
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+                </div>
+
+                <!-- Informações básicas -->
+                <div class="form-section">
+                    <h2><i class="fas fa-info-circle"></i> Informações básicas</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label>Título do anúncio <span class="required">*</span></label>
+                            <input type="text" id="titulo" placeholder="Ex: Mountain Bike Caloi Elite Suspensão Dianteira" maxlength="100">
+                            <small class="char-counter">0/100 caracteres</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Categoria <span class="required">*</span></label>
+                            <select id="categoria">
+                                <option value="">Selecione</option>
+                                <optgroup label="Bicicletas">
+                                    <option value="mtb">Mountain Bike</option>
+                                    <option value="speed">Speed</option>
+                                    <option value="bmx">BMX</option>
+                                    <option value="urbana">Urbana</option>
+                                    <option value="eletrica">Elétrica</option>
+                                    <option value="gravel">Gravel</option>
+                                </optgroup>
+                                <optgroup label="Quadros">
+                                    <option value="quadro-mtb">Quadro MTB</option>
+                                    <option value="quadro-speed">Quadro Speed</option>
+                                    <option value="quadro-bmx">Quadro BMX</option>
+                                </optgroup>
+                                <optgroup label="Componentes">
+                                    <option value="roda">Roda</option>
+                                    <option value="pneu">Pneu</option>
+                                    <option value="transmissao">Transmissão</option>
+                                    <option value="freio">Freio</option>
+                                    <option value="suspensao">Suspensão</option>
+                                    <option value="guidão">Guidão</option>
+                                </optgroup>
+                                <optgroup label="Acessórios">
+                                    <option value="capacete">Capacete</option>
+                                    <option value="luva">Luva</option>
+                                    <option value="oculos">Óculos</option>
+                                    <option value="sapatilha">Sapatilha</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Condição <span class="required">*</span></label>
+                            <select id="condicao">
+                                <option value="novo">Novo</option>
+                                <option value="seminovo">Seminovo</option>
+                                <option value="usado">Usado</option>
+                                <option value="recondicionado">Recondicionado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Marca</label>
+                            <input type="text" id="marca" placeholder="Ex: Caloi, Trek, Specialized">
+                        </div>
+                        <div class="form-group">
+                            <label>Modelo</label>
+                            <input type="text" id="modelo" placeholder="Ex: Elite, XC, Enduro">
+                        </div>
+                        <div class="form-group">
+                            <label>Ano</label>
+                            <input type="number" id="ano" placeholder="2024" min="1900" max="2026">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preço e frete -->
+                <div class="form-section">
+                    <h2><i class="fas fa-tag"></i> Preço e frete</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Preço <span class="required">*</span></label>
+                            <div class="preco-input">
+                                <span class="moeda">R$</span>
+                                <input type="text" id="preco" placeholder="0,00" class="preco-mask">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Quantidade em estoque</label>
+                            <input type="number" id="quantidade" value="1" min="1" max="999">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Peso (kg) <span class="required">*</span></label>
+                            <input type="number" id="peso" step="0.1" min="0.1" placeholder="0.0">
+                            <small>Para cálculo do frete</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Dimensões (cm) <span class="required">*</span></label>
+                            <div class="dimensoes-input">
+                                <input type="number" id="altura" placeholder="Altura">
+                                <span>x</span>
+                                <input type="number" id="largura" placeholder="Largura">
+                                <span>x</span>
+                                <input type="number" id="comprimento" placeholder="Comprimento">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="freteGratis">
+                            <span>Oferecer frete grátis</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Descrição -->
+                <div class="form-section">
+                    <h2><i class="fas fa-align-left"></i> Descrição detalhada</h2>
+                    
+                    <div class="form-group">
+                        <textarea id="descricao" rows="8" placeholder="Descreva seu produto com o máximo de detalhes possível. Inclua especificações técnicas, estado de conservação, motivo da venda, etc."></textarea>
+                        <small class="char-counter">0/2000 caracteres</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Especificações técnicas (opcional)</label>
+                        <div class="espec-grid">
+                            <div class="espec-item">
+                                <input type="text" placeholder="Ex: Tamanho do quadro">
+                                <input type="text" placeholder="Ex: 17">
+                            </div>
+                            <!-- Mais itens via JS -->
+                        </div>
+                        <button type="button" class="btn-add-espec"><i class="fas fa-plus"></i> Adicionar especificação</button>
+                    </div>
+                </div>
+
+                <!-- Destaque (opcional) -->
+                <div class="form-section">
+                    <h2><i class="fas fa-star"></i> Destacar produto (opcional)</h2>
+                    
+                    <div class="destaque-opcoes">
+                        <label class="destaque-card">
+                            <input type="radio" name="destaque" value="nenhum" checked>
+                            <div class="destaque-info">
+                                <h4>Sem destaque</h4>
+                                <p>Grátis</p>
+                            </div>
+                        </label>
+                        
+                        <label class="destaque-card">
+                            <input type="radio" name="destaque" value="7dias">
+                            <div class="destaque-info">
+                                <h4>Destacar por 7 dias</h4>
+                                <p class="preco-destaque">R$ 9,90</p>
+                                <small>Aparece no topo das buscas</small>
+                            </div>
+                        </label>
+                        
+                        <label class="destaque-card">
+                            <input type="radio" name="destaque" value="30dias">
+                            <div class="destaque-info">
+                                <h4>Destacar por 30 dias</h4>
+                                <p class="preco-destaque">R$ 29,90</p>
+                                <small>Melhor custo-benefício</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Comissão e valores -->
+                <div class="form-section resumo-venda">
+                    <h2><i class="fas fa-calculator"></i> Resumo da venda</h2>
+                    
+                    <div class="resumo-card">
+                        <div class="resumo-item">
+                            <span>Preço do produto:</span>
+                            <span id="resumoPreco">R$ 0,00</span>
+                        </div>
+                        <div class="resumo-item">
+                            <span>Comissão Espectro (10%):</span>
+                            <span id="resumoComissao">- R$ 0,00</span>
+                        </div>
+                        <div class="resumo-item destaque-item hidden">
+                            <span>Destaque escolhido:</span>
+                            <span id="resumoDestaque">- R$ 0,00</span>
+                        </div>
+                        <div class="resumo-item total">
+                            <span>Você receberá:</span>
+                            <strong id="resumoTotal">R$ 0,00</strong>
+                        </div>
+                    </div>
+                    
+                    <p class="resumo-obs">* O valor do frete é calculado na compra e não impacta seu recebimento</p>
+                </div>
+
+                <!-- Botões de ação -->
+                <div class="form-actions">
+                    <button type="button" class="btn-outline" id="cancelarCadastro">Cancelar</button>
+                    <button type="submit" class="btn-dourado" id="salvarProduto">
+                        <i class="fas fa-cloud-upload-alt"></i> Publicar anúncio
+                    </button>
+                </div>
+            </form>
+
+            <!-- Modal de sucesso -->
+            <div class="modal" id="sucessoModal">
+                <div class="modal-content modal-sucesso">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Produto cadastrado com sucesso!</h2>
+                    <p>Seu anúncio foi publicado e já está visível para os compradores.</p>
+                    <div class="modal-buttons">
+                        <a href="produto.html?id=novo" class="btn-dourado">Ver produto</a>
+                        <a href="cadastro-produto.html" class="btn-outline">Cadastrar outro</a>
+                        <a href="perfil.html" class="btn-link">Ir para meu perfil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (mesmo do index) -->
+    <footer class="footer">
+        <!-- mesmo footer do index.html -->
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/notificacoes.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/produto.js"></script>
+    <script>
+        // Script específico para página de cadastro
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se usuário é vendedor
+            const usuarioLogado = JSON.parse(localStorage.getItem('usuario') || '{}');
+            const isVendedor = usuarioLogado.tipo === 'vendedor' || usuarioLogado.statusVendedor === 'aprovado';
+            
+            if(isVendedor) {
+                document.getElementById('vendedorVerificacao').style.display = 'none';
+                document.getElementById('formCadastroProduto').style.display = 'block';
+            }
+            
+            // Máscaras
+            const cpfInput = document.getElementById('cpf');
+            if(cpfInput) {
+                cpfInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if(value.length <= 11) {
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                        e.target.value = value;
+                    }
+                });
+            }
+            
+            // Upload múltiplas imagens
+            const addImageBox = document.getElementById('addImageBox');
+            const imageInput = document.getElementById('imageInput');
+            
+            if(addImageBox && imageInput) {
+                addImageBox.addEventListener('click', () => {
+                    imageInput.click();
+                });
+                
+                imageInput.addEventListener('change', function(e) {
+                    const files = Array.from(e.target.files);
+                    const uploadGrid = document.getElementById('uploadGrid');
+                    
+                    files.forEach((file, index) => {
+                        if(uploadGrid.children.length < 9) { // Máximo 8 imagens + box add
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const imgDiv = document.createElement('div');
+                                imgDiv.className = 'upload-image';
+                                imgDiv.innerHTML = `
+                                    <img src="${e.target.result}" alt="Preview">
+                                    <button type="button" class="remove-image"><i class="fas fa-times"></i></button>
+                                    ${index === 0 ? '<span class="capa-badge">Capa</span>' : ''}
+                                `;
+                                uploadGrid.insertBefore(imgDiv, addImageBox);
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                });
+            }
+            
+            // Preço mask
+            const precoInput = document.getElementById('preco');
+            if(precoInput) {
+                precoInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = (parseInt(value) / 100).toFixed(2);
+                    value = value.replace('.', ',');
+                    value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+                    e.target.value = value;
+                    
+                    // Atualizar resumo
+                    document.getElementById('resumoPreco').textContent = `R$ ${value}`;
+                    calcularResumo();
+                });
+            }
+            
+            // Função para calcular resumo
+            function calcularResumo() {
+                const precoTexto = document.getElementById('preco').value;
+                const preco = parseFloat(precoTexto.replace(/\./g, '').replace(',', '.')) || 0;
+                const comissao = preco * 0.1;
+                const destaque = document.querySelector('input[name="destaque"]:checked');
+                let valorDestaque = 0;
+                
+                if(destaque && destaque.value === '7dias') valorDestaque = 9.90;
+                if(destaque && destaque.value === '30dias') valorDestaque = 29.90;
+                
+                document.getElementById('resumoComissao').textContent = `- R$ ${comissao.toFixed(2).replace('.', ',')}`;
+                
+                if(valorDestaque > 0) {
+                    document.querySelector('.destaque-item').classList.remove('hidden');
+                    document.getElementById('resumoDestaque').textContent = `- R$ ${valorDestaque.toFixed(2).replace('.', ',')}`;
+                } else {
+                    document.querySelector('.destaque-item').classList.add('hidden');
+                }
+                
+                const total = preco - comissao - valorDestaque;
+                document.getElementById('resumoTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+            
+            // Event listeners para destaque
+            document.querySelectorAll('input[name="destaque"]').forEach(radio => {
+                radio.addEventListener('change', calcularResumo);
+            });
+        });
+    </script>
+</body>
+</html>

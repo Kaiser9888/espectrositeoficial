@@ -1,0 +1,684 @@
+/* ===== COMPONENTES REUTILIZÁVEIS ===== */
+
+/* Botões */
+.btn-dourado {
+    background: var(--imperio-dourado);
+    color: var(--imperio-vermelho);
+    padding: 12px 30px;
+    border: none;
+    border-radius: var(--borda-raio);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicao);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-dourado:hover {
+    background: var(--imperio-dourado-escuro);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
+}
+
+.btn-dourado:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--imperio-borda);
+    padding: 8px 15px;
+    border-radius: var(--borda-raio);
+    cursor: pointer;
+    transition: var(--transicao);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-outline:hover {
+    background: var(--imperio-marmore);
+}
+
+.btn-outline:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-vermelho {
+    background: var(--imperio-vermelho);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: var(--borda-raio);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicao);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-vermelho:hover {
+    background: var(--imperio-vermelho-escuro);
+}
+
+.btn-sucesso {
+    background: var(--imperio-sucesso);
+    color: white;
+}
+
+.btn-sucesso:hover {
+    background: #218838;
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.btn-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--imperio-borda);
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.btn-icon:hover {
+    background: var(--imperio-marmore);
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: var(--borda-raio);
+    box-shadow: var(--sombra);
+    padding: 20px;
+    transition: var(--transicao);
+}
+
+.card:hover {
+    box-shadow: var(--sombra-forte);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--imperio-borda);
+}
+
+.card-header h2, .card-header h3 {
+    margin: 0;
+}
+
+/* Formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--imperio-texto);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--imperio-borda);
+    border-radius: var(--borda-raio);
+    font-size: 14px;
+    transition: var(--transicao);
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--imperio-vermelho);
+    box-shadow: 0 0 0 2px rgba(139,0,0,0.1);
+}
+
+.form-group input:disabled, 
+.form-group select:disabled, 
+.form-group textarea:disabled {
+    background: var(--imperio-marmore);
+    cursor: not-allowed;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--imperio-texto-claro);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+/* Checkbox e Radio */
+.checkbox-label, .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.checkbox-label input, .radio-label input {
+    width: auto;
+    margin: 0;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* Upload de imagens */
+.upload-area {
+    border: 2px dashed var(--imperio-borda);
+    border-radius: var(--borda-raio);
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transicao);
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: var(--imperio-vermelho);
+    background: rgba(139,0,0,0.02);
+}
+
+.upload-area i {
+    font-size: 48px;
+    color: var(--imperio-texto-claro);
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.upload-area span {
+    font-size: 12px;
+    color: var(--imperio-texto-claro);
+}
+
+.upload-area input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-preview {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.file-preview-item {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--borda-raio);
+    overflow: hidden;
+}
+
+.file-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.file-preview-item button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Upload múltiplo */
+.upload-multiplo {
+    margin-bottom: 20px;
+}
+
+.upload-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.upload-box {
+    aspect-ratio: 1;
+    border: 2px dashed var(--imperio-borda);
+    border-radius: var(--borda-raio);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.upload-box:hover {
+    border-color: var(--imperio-vermelho);
+    background: rgba(139,0,0,0.02);
+}
+
+.upload-box i {
+    font-size: 24px;
+    color: var(--imperio-texto-claro);
+    margin-bottom: 5px;
+}
+
+.upload-box span {
+    font-size: 11px;
+    color: var(--imperio-texto-claro);
+}
+
+.upload-image {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--borda-raio);
+    overflow: hidden;
+}
+
+.upload-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-image .remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.upload-image .capa-badge {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background: var(--imperio-dourado);
+    color: var(--imperio-vermelho);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--imperio-borda);
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transicao);
+}
+
+.tab:hover {
+    color: var(--imperio-vermelho);
+}
+
+.tab.active {
+    color: var(--imperio-vermelho);
+    border-bottom-color: var(--imperio-vermelho);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Modais */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: var(--borda-raio);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-sm {
+    max-width: 400px;
+}
+
+.modal-lg {
+    max-width: 800px;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--imperio-borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header h2, .modal-header h3 {
+    margin: 0;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--imperio-texto-claro);
+}
+
+.modal-close:hover {
+    color: var(--imperio-vermelho);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid var(--imperio-borda);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-sucesso {
+    text-align: center;
+}
+
+.modal-sucesso i {
+    font-size: 64px;
+    color: var(--imperio-sucesso);
+    margin-bottom: 20px;
+}
+
+/* Alertas */
+.alert {
+    padding: 12px 15px;
+    border-radius: var(--borda-raio);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert i {
+    font-size: 20px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge-info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* Loading */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--imperio-borda);
+    border-top-color: var(--imperio-vermelho);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-lg {
+    width: 40px;
+    height: 40px;
+}
+
+.loading-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Paginação */
+.paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.paginacao button {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--imperio-borda);
+    background: white;
+    border-radius: var(--borda-raio);
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.paginacao button:hover:not(:disabled) {
+    background: var(--imperio-marmore);
+    border-color: var(--imperio-vermelho);
+}
+
+.paginacao button.active {
+    background: var(--imperio-vermelho);
+    color: white;
+    border-color: var(--imperio-vermelho);
+}
+
+.paginacao button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagina-atual {
+    padding: 0 10px;
+}
+
+/* Tooltips */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    font-size: 12px;
+    border-radius: 3px;
+    white-space: nowrap;
+    display: none;
+    margin-bottom: 5px;
+}
+
+[data-tooltip]:hover:before {
+    display: block;
+}
+
+/* Animações */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Scroll personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--imperio-marmore);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--imperio-texto-claro);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--imperio-vermelho);
+}

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Espectro Bikes</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER SIMPLIFICADO (apenas logo) -->
+    <header class="header-checkout">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-imperial">ESPECTRO</span>
+                    <span class="logo-sub">BIKES</span>
+                </a>
+                <div class="checkout-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Carrinho</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step active">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Checkout</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Pagamento</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Confirmação</span>
+                    </div>
+                </div>
+                <div class="secure-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Checkout Seguro</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <div class="checkout-wrapper">
+                <!-- FORMULÁRIO DE CHECKOUT -->
+                <div class="checkout-form">
+                    <h1>Finalizar compra</h1>
+
+                    <!-- ENDEREÇO DE ENTREGA -->
+                    <section class="checkout-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-map-marker-alt"></i> Endereço de entrega</h2>
+                            <button class="btn-link" id="alterarEndereco">Alterar</button>
+                        </div>
+                        
+                        <div class="endereco-card" id="enderecoSelecionado">
+                            <div class="endereco-info">
+                                <strong>João Silva</strong>
+                                <p>Rua das Bicicletas, 123 - Centro</p>
+                                <p>São Paulo - SP, 01234-567</p>
+                                <p>(11) 99999-9999</p>
+                            </div>
+                            <span class="endereco-padrao">Principal</span>
+                        </div>
+
+                        <!-- Formulário de novo endereço (inicialmente oculto) -->
+                        <div class="endereco-form" id="enderecoForm" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group full">
+                                    <label>Nome completo <span class="required">*</span></label>
+                                    <input type="text" id="nomeCompleto" value="João Silva">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>CEP <span class="required">*</span></label>
+                                    <input type="text" id="cep" class="cep-mask" value="01234-567">
+                                </div>
+                                <div class="form-group">
+                                    <label>Rua <span class="required">*</span></label>
+                                    <input type="text" id="rua" value="Rua das Bicicletas">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Número <span class="required">*</span></label>
+                                    <input type="text" id="numero" value="123">
+                                </div>
+                                <div class="form-group">
+                                    <label>Complemento</label>
+                                    <input type="text" id="complemento" placeholder="Apto, bloco">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Bairro <span class="required">*</span></label>
+                                    <input type="text" id="bairro" value="Centro">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cidade <span class="required">*</span></label>
+                                    <input type="text" id="cidade" value="São Paulo">
+                                </div>
+                                <div class="form-group">
+                                    <label>Estado <span class="required">*</span></label>
+                                    <select id="estado">
+                                        <option value="SP" selected>São Paulo</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group full">
+                                    <label>Telefone para contato <span class="required">*</span></label>
+                                    <input type="text" id="telefone" class="tel-mask" value="(11) 99999-9999">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="salvarEndereco" checked>
+                                    <span>Salvar endereço para próximas compras</span>
+                                </label>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button class="btn-outline" id="cancelarEndereco">Cancelar</button>
+                                <button class="btn-dourado" id="salvarEnderecoBtn">Salvar endereço</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- FRETE E PRAZO -->
+                    <section class="checkout-section">
+                        <h2><i class="fas fa-truck"></i> Frete e prazo</h2>
+                        
+                        <div class="frete-lista" id="freteLista">
+                            <label class="frete-option">
+                                <input type="radio" name="freteCheckout" value="pac" checked>
+                                <div class="frete-info">
+                                    <strong>PAC</strong>
+                                    <span>Entrega em 7 dias úteis</span>
+                                </div>
+                                <span class="frete-preco">R$ 25,90</span>
+                            </label>
+                            
+                            <label class="frete-option">
+                                <input type="radio" name="freteCheckout" value="sedex">
+                                <div class="frete-info">
+                                    <strong>Sedex</strong>
+                                    <span>Entrega em 2 dias úteis</span>
+                                </div>
+                                <span class="frete-preco">R$ 45,90</span>
+                            </label>
+                            
+                            <label class="frete-option">
+                                <input type="radio" name="freteCheckout" value="transportadora">
+                                <div class="frete-info">
+                                    <strong>Transportadora</strong>
+                                    <span>Entrega em 5 dias úteis</span>
+                                </div>
+                                <span class="frete-preco">R$ 35,90</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- FORMAS DE PAGAMENTO -->
+                    <section class="checkout-section">
+                        <h2><i class="fas fa-credit-card"></i> Forma de pagamento</h2>
+                        
+                        <div class="pagamento-tabs">
+                            <button class="pagamento-tab active" data-tab="cartao">
+                                <i class="fas fa-credit-card"></i> Cartão de crédito
+                            </button>
+                            <button class="pagamento-tab" data-tab="pix">
+                                <i class="fas fa-qrcode"></i> Pix
+                            </button>
+                            <button class="pagamento-tab" data-tab="boleto">
+                                <i class="fas fa-barcode"></i> Boleto
+                            </button>
+                        </div>
+
+                        <!-- CARTÃO DE CRÉDITO -->
+                        <div class="pagamento-content active" id="cartaoContent">
+                            <div class="cartao-form">
+                                <div class="form-group">
+                                    <label>Número do cartão <span class="required">*</span></label>
+                                    <input type="text" id="cartaoNumero" class="cartao-mask" placeholder="0000 0000 0000 0000">
+                                    <div class="bandeiras">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <i class="fab fa-cc-mastercard"></i>
+                                        <i class="fab fa-cc-amex"></i>
+                                        <i class="fab fa-cc-elo"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Nome no cartão <span class="required">*</span></label>
+                                        <input type="text" id="cartaoNome" placeholder="Como está no cartão">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Validade <span class="required">*</span></label>
+                                        <input type="text" id="cartaoValidade" class="validade-mask" placeholder="MM/AA">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CVV <span class="required">*</span></label>
+                                        <input type="text" id="cartaoCvv" class="cvv-mask" placeholder="123" maxlength="4">
+                                        <i class="fas fa-question-circle" id="cvvHelp"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Número de parcelas</label>
+                                    <select id="parcelas">
+                                        <option value="1">1x de R$ 2.545,60 (sem juros)</option>
+                                        <option value="2">2x de R$ 1.272,80 (sem juros)</option>
+                                        <option value="3">3x de R$ 848,53 (sem juros)</option>
+                                        <option value="4">4x de R$ 636,40 (sem juros)</option>
+                                        <option value="5">5x de R$ 509,12 (sem juros)</option>
+                                        <option value="6">6x de R$ 424,27 (sem juros)</option>
+                                        <option value="7">7x de R$ 363,66 (sem juros)</option>
+                                        <option value="8">8x de R$ 318,20 (sem juros)</option>
+                                        <option value="9">9x de R$ 282,84 (sem juros)</option>
+                                        <option value="10">10x de R$ 254,56 (sem juros)</option>
+                                        <option value="11">11x de R$ 231,42 (sem juros)</option>
+                                        <option value="12">12x de R$ 212,13 (sem juros)</option>
+                                    </select>
+                                </div>
+
+                                <div class="cartao-seguranca">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Seus dados estão protegidos com criptografia</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIX -->
+                        <div class="pagamento-content" id="pixContent">
+                            <div class="pix-info">
+                                <i class="fas fa-qrcode"></i>
+                                <h3>Pague com Pix</h3>
+                                <p>Escaneie o QR Code ou copie o código</p>
+                                
+                                <div class="qrcode-simulado">
+                                    <img src="assets/icons/qrcode-sample.png" alt="QR Code Simulado">
+                                </div>
+                                
+                                <div class="pix-copia-cola">
+                                    <code>00020126580014BR.GOV.BCB.PIX0136joao.silva@email.com520400005303986540410.005802BR5915Joao Silva6008Sao Paulo62070503***6304E2B7</code>
+                                    <button class="btn-outline" id="copiarPix">
+                                        <i class="fas fa-copy"></i> Copiar código
+                                    </button>
+                                </div>
+                                
+                                <div class="pix-aviso">
+                                    <i class="fas fa-clock"></i>
+                                    <span>O QR Code expira em 30 minutos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BOLETO -->
+                        <div class="pagamento-content" id="boletoContent">
+                            <div class="boleto-info">
+                                <i class="fas fa-barcode"></i>
+                                <h3>Pague com Boleto Bancário</h3>
+                                <p>O boleto pode ser pago em qualquer banco, casa lotérica ou app</p>
+                                
+                                <div class="boleto-simulado">
+                                    <div class="boleto-linha">00190.00009 01234.567890 12345.678901 1 12345678901234</div>
+                                </div>
+                                
+                                <div class="boleto-detalhes">
+                                    <div class="boleto-item">
+                                        <span>Valor:</span>
+                                        <strong>R$ 2.545,60</strong>
+                                    </div>
+                                    <div class="boleto-item">
+                                        <span>Vencimento:</span>
+                                        <strong>03/04/2026</strong>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn-dourado" id="gerarBoleto">
+                                    <i class="fas fa-download"></i> Gerar boleto
+                                </button>
+                                
+                                <div class="boleto-aviso">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>O pagamento pode levar até 3 dias úteis para compensar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CUPOM DE DESCONTO -->
+                    <section class="checkout-section">
+                        <h2><i class="fas fa-tag"></i> Cupom de desconto</h2>
+                        
+                        <div class="cupom-checkout">
+                            <input type="text" id="cupomCheckout" placeholder="Digite seu cupom">
+                            <button class="btn-outline" id="aplicarCupomCheckout">Aplicar</button>
+                        </div>
+                        
+                        <div class="cupom-aplicado" id="cupomAplicado" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Cupom <strong>ESPECTRO10</strong> aplicado!</span>
+                            <button class="btn-link" id="removerCupom">Remover</button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- RESUMO DO PEDIDO -->
+                <div class="checkout-resumo">
+                    <h2>Resumo do pedido</h2>
+                    
+                    <div class="resumo-card">
+                        <div class="resumo-produtos" id="resumoProdutos">
+                            <div class="resumo-produto">
+                                <div class="produto-imagem">
+                                    <img src="assets/produtos/bike1.jpg" alt="Bike">
+                                </div>
+                                <div class="produto-info">
+                                    <h4>Mountain Bike Caloi Elite</h4>
+                                    <span class="produto-qtd">1x</span>
+                                </div>
+                                <span class="produto-preco">R$ 1.899,90</span>
+                            </div>
+                            
+                            <div class="resumo-produto">
+                                <div class="produto-imagem">
+                                    <img src="assets/produtos/capacete1.jpg" alt="Capacete">
+                                </div>
+                                <div class="produto-info">
+                                    <h4>Capacete Giro Syntax</h4>
+                                    <span class="produto-qtd">2x</span>
+                                </div>
+                                <span class="produto-preco">R$ 599,80</span>
+                            </div>
+                        </div>
+
+                        <div class="resumo-divider"></div>
+
+                        <div class="resumo-item">
+                            <span>Subtotal</span>
+                            <span id="resumoSubtotal">R$ 2.499,70</span>
+                        </div>
+                        
+                        <div class="resumo-item">
+                            <span>Frete</span>
+                            <span id="resumoFrete">R$ 45,90</span>
+                        </div>
+                        
+                        <div class="resumo-item">
+                            <span>Desconto</span>
+                            <span id="resumoDesconto">- R$ 0,00</span>
+                        </div>
+                        
+                        <div class="resumo-divider"></div>
+                        
+                        <div class="resumo-item total">
+                            <span>Total</span>
+                            <strong id="resumoTotal">R$ 2.545,60</strong>
+                        </div>
+
+                        <div class="resumo-parcelas">
+                            <span>ou em até 12x de</span>
+                            <strong id="resumoParcela">R$ 212,13</strong>
+                            <small>sem juros</small>
+                        </div>
+                    </div>
+
+                    <div class="resumo-entrega">
+                        <h4><i class="fas fa-calendar-alt"></i> Previsão de entrega</h4>
+                        <p id="previsaoEntrega">Entrega entre 10 e 15 dias úteis</p>
+                    </div>
+
+                    <div class="resumo-vendedores">
+                        <h4><i class="fas fa-store"></i> Vendedores</h4>
+                        <div class="vendedor-resumo">
+                            <span>Bike Shop Brasil</span>
+                            <span class="vendedor-status">Confirmado</span>
+                        </div>
+                        <div class="vendedor-resumo">
+                            <span>Capacetes Pro</span>
+                            <span class="vendedor-status">Confirmado</span>
+                        </div>
+                    </div>
+
+                    <div class="resumo-seguranca">
+                        <div class="seguranca-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Compra Garantida</strong>
+                                <span>Seu dinheiro está protegido</span>
+                            </div>
+                        </div>
+                        <div class="seguranca-item">
+                            <i class="fas fa-undo-alt"></i>
+                            <div>
+                                <strong>Devolução grátis</strong>
+                                <span>7 dias para devolver</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-dourado btn-finalizar" id="finalizarCompra">
+                        <i class="fas fa-lock"></i> Finalizar compra
+                    </button>
+
+                    <p class="termos-texto">
+                        Ao finalizar a compra, você concorda com os 
+                        <a href="#">Termos de Uso</a> e 
+                        <a href="#">Política de Privacidade</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DE CVV -->
+    <div class="modal" id="cvvModal">
+        <div class="modal-content modal-sm">
+            <h3>O que é CVV?</h3>
+            <p>CVV é o código de segurança de 3 ou 4 dígitos que fica no verso do seu cartão.</p>
+            <img src="assets/icons/cvv-example.jpg" alt="Exemplo de CVV">
+            <button class="btn-dourado" id="fecharCvvModal">Entendi</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMAÇÃO -->
+    <div class="modal" id="confirmacaoModal">
+        <div class="modal-content modal-sucesso">
+            <i class="fas fa-check-circle"></i>
+            <h2>Pedido realizado com sucesso!</h2>
+            <p>Número do pedido: <strong>#ESP-123456</strong></p>
+            <p>Enviamos a confirmação para seu e-mail.</p>
+            
+            <div class="modal-buttons">
+                <a href="perfil.html?tab=pedidos" class="btn-dourado">Acompanhar pedido</a>
+                <a href="index.html" class="btn-outline">Continuar comprando</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SIMPLIFICADO -->
+    <footer class="footer-checkout">
+        <div class="container">
+            <div class="footer-content">
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-elo"></i>
+                    <i class="fab fa-pix"></i>
+                    <i class="fas fa-barcode"></i>
+                </div>
+                <div class="security-seals">
+                    <img src="assets/icons/ssl.png" alt="SSL">
+                    <img src="assets/icons/encrypt.png" alt="Encrypt">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/notificacoes.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alternar entre abas de pagamento
+            const tabs = document.querySelectorAll('.pagamento-tab');
+            const contents = document.querySelectorAll('.pagamento-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    const tabId = this.dataset.tab;
+                    document.getElementById(tabId + 'Content').classList.add('active');
+                });
+            });
+
+            // Máscaras
+            function aplicarMascara(input, mascara) {
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    if(mascara === 'cartao') {
+                        value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+                    } else if(mascara === 'validade') {
+                        if(value.length > 2) {
+                            value = value.substring(0,2) + '/' + value.substring(2,4);
+                        }
+                    } else if(mascara === 'cvv') {
+                        value = value.substring(0,4);
+                    } else if(mascara === 'cep') {
+                        if(value.length > 5) {
+                            value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+                        }
+                    } else if(mascara === 'tel') {
+                        if(value.length > 2 && value.length <= 6) {
+                            value = '(' + value.substring(0,2) + ') ' + value.substring(2);
+                        } else if(value.length > 6) {
+                            value = '(' + value.substring(0,2) + ') ' + value.substring(2,7) + '-' + value.substring(7,11);
+                        }
+                    }
+                    
+                    e.target.value = value;
+                });
+            }
+
+            // Aplicar máscaras
+            aplicarMascara(document.getElementById('cartaoNumero'), 'cartao');
+            aplicarMascara(document.getElementById('cartaoValidade'), 'validade');
+            aplicarMascara(document.getElementById('cartaoCvv'), 'cvv');
+            aplicarMascara(document.getElementById('cep'), 'cep');
+            aplicarMascara(document.getElementById('telefone'), 'tel');
+
+            // Modal CVV
+            document.getElementById('cvvHelp')?.addEventListener('click', function() {
+                document.getElementById('cvvModal').style.display = 'flex';
+            });
+
+            document.getElementById('fecharCvvModal')?.addEventListener('click', function() {
+                document.getElementById('cvvModal').style.display = 'none';
+            });
+
+            // Alterar endereço
+            document.getElementById('alterarEndereco')?.addEventListener('click', function() {
+                document.getElementById('enderecoSelecionado').style.display = 'none';
+                document.getElementById('enderecoForm').style.display = 'block';
+            });
+
+            document.getElementById('cancelarEndereco')?.addEventListener('click', function() {
+                document.getElementById('enderecoForm').style.display = 'none';
+                document.getElementById('enderecoSelecionado').style.display = 'flex';
+            });
+
+            document.getElementById('salvarEnderecoBtn')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Simular salvamento
+                const nome = document.getElementById('nomeCompleto').value;
+                const rua = document.getElementById('rua').value;
+                const numero = document.getElementById('numero').value;
+                const bairro = document.getElementById('bairro').value;
+                const cidade = document.getElementById('cidade').value;
+                const estado = document.getElementById('estado').value;
+                const cep = document.getElementById('cep').value;
+                
+                document.querySelector('#enderecoSelecionado .endereco-info strong').textContent = nome;
+                document.querySelector('#enderecoSelecionado .endereco-info p:nth-child(2)').textContent = `${rua}, ${numero} - ${bairro}`;
+                document.querySelector('#enderecoSelecionado .endereco-info p:nth-child(3)').textContent = `${cidade} - ${estado}, ${cep}`;
+                
+                document.getElementById('enderecoForm').style.display = 'none';
+                document.getElementById('enderecoSelecionado').style.display = 'flex';
+            });
+
+            // Opções de frete
+            document.querySelectorAll('input[name="freteCheckout"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const preco = this.closest('.frete-option').querySelector('.frete-preco').textContent;
+                    document.getElementById('resumoFrete').textContent = preco;
+                    atualizarTotal();
+                });
+            });
+
+            // Cupom de desconto
+            document.getElementById('aplicarCupomCheckout')?.addEventListener('click', function() {
+                const cupom = document.getElementById('cupomCheckout').value;
+                
+                if(cupom.toUpperCase() === 'ESPECTRO10') {
+                    document.getElementById('cupomAplicado').style.display = 'flex';
+                    document.getElementById('cupomCheckout').disabled = true;
+                    document.getElementById('aplicarCupomCheckout').disabled = true;
+                    
+                    // Aplicar desconto
+                    document.getElementById('resumoDesconto').textContent = '- R$ 50,00';
+                    atualizarTotal();
+                } else {
+                    alert('Cupom inválido');
+                }
+            });
+
+            document.getElementById('removerCupom')?.addEventListener('click', function() {
+                document.getElementById('cupomAplicado').style.display = 'none';
+                document.getElementById('cupomCheckout').disabled = false;
+                document.getElementById('aplicarCupomCheckout').disabled = false;
+                document.getElementById('cupomCheckout').value = '';
+                document.getElementById('resumoDesconto').textContent = '- R$ 0,00';
+                atualizarTotal();
+            });
+
+            function atualizarTotal() {
+                const subtotal = 2499.70;
+                const frete = parseFloat(document.getElementById('resumoFrete').textContent.replace('R$ ', '').replace(',', '.'));
+                const desconto = parseFloat(document.getElementById('resumoDesconto').textContent.replace('- R$ ', '').replace(',', '.')) || 0;
+                const total = subtotal + frete - desconto;
+                
+                document.getElementById('resumoTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+                
+                // Atualizar parcelas
+                const parcelaSelect = document.getElementById('parcelas');
+                if(parcelaSelect) {
+                    parcelaSelect.innerHTML = '';
+                    for(let i = 1; i <= 12; i++) {
+                        const valorParcela = total / i;
+                        const option = document.createElement('option');
+                        option.value = i;
+                        option.textContent = `${i}x de R$ ${valorParcela.toFixed(2).replace('.', ',')} (sem juros)`;
+                        parcelaSelect.appendChild(option);
+                    }
+                }
+                
+                document.getElementById('resumoParcela').textContent = `R$ ${(total/12).toFixed(2).replace('.', ',')}`;
+            }
+
+            // Finalizar compra
+            document.getElementById('finalizarCompra')?.addEventListener('click', function() {
+                // Simular processamento
+                this.disabled = true;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+                
+                setTimeout(() => {
+                    document.getElementById('confirmacaoModal').style.display = 'flex';
+                    
+                    // Limpar carrinho
+                    localStorage.removeItem('carrinho');
+                    document.getElementById('cartBadge').textContent = '0';
+                }, 2000);
+            });
+
+            // Copiar código PIX
+            document.getElementById('copiarPix')?.addEventListener('click', function() {
+                const codigo = document.querySelector('.pix-copia-cola code').textContent;
+                navigator.clipboard.writeText(codigo);
+                
+                this.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-copy"></i> Copiar código';
+                }, 2000);
+            });
+
+            // Gerar boleto
+            document.getElementById('gerarBoleto')?.addEventListener('click', function() {
+                alert('Boleto gerado com sucesso! Verifique seu e-mail.');
+            });
+
+            // Fechar modais
+            document.querySelectorAll('.modal .btn-dourado, .modal .modal-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+
+            // Inicializar total
+            atualizarTotal();
+        });
+    </script>
+</body>
+</html>

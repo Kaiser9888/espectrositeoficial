@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Cadastro - Espectro Bikes</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="login-body">
+    <!-- HEADER SIMPLIFICADO -->
+    <header class="header-login">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-imperial">ESPECTRO</span>
+                <span class="logo-sub">BIKES</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="login-page">
+        <div class="container">
+            <div class="login-container">
+                <!-- Tabs de Login/Cadastro -->
+                <div class="login-tabs">
+                    <button class="login-tab active" id="tabLogin">Entrar</button>
+                    <button class="login-tab" id="tabCadastro">Criar conta</button>
+                </div>
+
+                <!-- FORMULÁRIO DE LOGIN -->
+                <div class="login-form active" id="formLogin">
+                    <h2>Bem-vindo de volta!</h2>
+                    <p>Faça login para continuar</p>
+
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">
+                                <i class="fas fa-envelope"></i>
+                                E-mail
+                            </label>
+                            <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginSenha">
+                                <i class="fas fa-lock"></i>
+                                Senha
+                            </label>
+                            <div class="senha-input">
+                                <input type="password" id="loginSenha" placeholder="********" required>
+                                <button type="button" class="toggle-senha">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="lembrar">
+                                <span>Lembrar-me</span>
+                            </label>
+                            <a href="#" class="esqueci-senha">Esqueci minha senha</a>
+                        </div>
+
+                        <button type="submit" class="btn-dourado btn-login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar
+                        </button>
+
+                        <div class="login-divider">
+                            <span>ou</span>
+                        </div>
+
+                        <div class="login-social">
+                            <button type="button" class="btn-social google">
+                                <i class="fab fa-google"></i>
+                                Continuar com Google
+                            </button>
+                            <button type="button" class="btn-social facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                Continuar com Facebook
+                            </button>
+                        </div>
+
+                        <div class="login-cadastro-link">
+                            Não tem uma conta? 
+                            <a href="#" id="linkCadastro">Cadastre-se</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- FORMULÁRIO DE CADASTRO -->
+                <div class="login-form" id="formCadastro">
+                    <h2>Crie sua conta</h2>
+                    <p>E comece a comprar e vender no Espectro Bikes</p>
+
+                    <form id="cadastroForm">
+                        <!-- STEP 1: Dados básicos -->
+                        <div class="cadastro-step active" id="step1">
+                            <div class="form-group">
+                                <label for="cadastroNome">
+                                    <i class="fas fa-user"></i>
+                                    Nome completo <span class="required">*</span>
+                                </label>
+                                <input type="text" id="cadastroNome" placeholder="Digite seu nome completo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cadastroEmail">
+                                    <i class="fas fa-envelope"></i>
+                                    E-mail <span class="required">*</span>
+                                </label>
+                                <input type="email" id="cadastroEmail" placeholder="seu@email.com" required>
+                                <small>Usaremos para login e notificações</small>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastroCpf">
+                                        <i class="fas fa-id-card"></i>
+                                        CPF <span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="cadastroCpf" class="cpf-mask" placeholder="000.000.000-00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastroTel">
+                                        <i class="fas fa-phone"></i>
+                                        Telefone <span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="cadastroTel" class="tel-mask" placeholder="(11) 99999-9999" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cadastroDataNasc">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Data de nascimento <span class="required">*</span>
+                                </label>
+                                <input type="date" id="cadastroDataNasc" required>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Endereço -->
+                        <div class="cadastro-step" id="step2">
+                            <div class="form-group">
+                                <label for="cadastroCep">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    CEP <span class="required">*</span>
+                                </label>
+                                <div class="cep-input-group">
+                                    <input type="text" id="cadastroCep" class="cep-mask" placeholder="00000-000" required>
+                                    <button type="button" class="btn-outline btn-buscar-cep" id="buscarCep">
+                                        <i class="fas fa-search"></i> Buscar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cadastroRua">Rua <span class="required">*</span></label>
+                                <input type="text" id="cadastroRua" placeholder="Rua" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastroNumero">Número <span class="required">*</span></label>
+                                    <input type="text" id="cadastroNumero" placeholder="123" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastroComplemento">Complemento</label>
+                                    <input type="text" id="cadastroComplemento" placeholder="Apto, bloco">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastroBairro">Bairro <span class="required">*</span></label>
+                                    <input type="text" id="cadastroBairro" placeholder="Bairro" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastroCidade">Cidade <span class="required">*</span></label>
+                                    <input type="text" id="cadastroCidade" placeholder="Cidade" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastroEstado">Estado <span class="required">*</span></label>
+                                    <select id="cadastroEstado" required>
+                                        <option value="">Selecione</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: Senha -->
+                        <div class="cadastro-step" id="step3">
+                            <div class="form-group">
+                                <label for="cadastroSenha">
+                                    <i class="fas fa-lock"></i>
+                                    Senha <span class="required">*</span>
+                                </label>
+                                <div class="senha-input">
+                                    <input type="password" id="cadastroSenha" placeholder="********" required>
+                                    <button type="button" class="toggle-senha">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="senha-requisitos">
+                                    <p>Sua senha deve ter:</p>
+                                    <ul>
+                                        <li id="reqLength"><i class="far fa-circle"></i> Mínimo 8 caracteres</li>
+                                        <li id="reqNumber"><i class="far fa-circle"></i> Pelo menos 1 número</li>
+                                        <li id="reqUpper"><i class="far fa-circle"></i> Pelo menos 1 letra maiúscula</li>
+                                        <li id="reqLower"><i class="far fa-circle"></i> Pelo menos 1 letra minúscula</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cadastroConfirmarSenha">
+                                    <i class="fas fa-lock"></i>
+                                    Confirmar senha <span class="required">*</span>
+                                </label>
+                                <div class="senha-input">
+                                    <input type="password" id="cadastroConfirmarSenha" placeholder="********" required>
+                                    <button type="button" class="toggle-senha">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                                <span class="senha-match" id="senhaMatch"></span>
+                            </div>
+                        </div>
+
+                        <!-- STEP 4: Termos -->
+                        <div class="cadastro-step" id="step4">
+                            <div class="termos-card">
+                                <h3>Termos de uso</h3>
+                                <div class="termos-scroll">
+                                    <p>1. Ao criar uma conta no Espectro Bikes, você concorda com nossos termos de uso e política de privacidade.</p>
+                                    <p>2. Você é responsável por manter a segurança da sua conta e senha.</p>
+                                    <p>3. O Espectro Bikes não se responsabiliza por negociações fora da plataforma.</p>
+                                    <p>4. Todas as compras e vendas devem seguir o código de defesa do consumidor.</p>
+                                    <p>5. A comissão do marketplace será aplicada conforme informado no momento da venda.</p>
+                                    <p>6. Seus dados serão utilizados apenas para fins de operação da plataforma.</p>
+                                    <p>7. Você pode solicitar a exclusão da sua conta a qualquer momento.</p>
+                                    <p>8. Preços e promoções podem variar conforme disponibilidade.</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="aceitoTermos" required>
+                                    <span>Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="aceitoEmail">
+                                    <span>Aceito receber e-mails promocionais (opcional)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Steps navigation -->
+                        <div class="cadastro-steps">
+                            <div class="step-indicators">
+                                <span class="step-dot active" data-step="1"></span>
+                                <span class="step-dot" data-step="2"></span>
+                                <span class="step-dot" data-step="3"></span>
+                                <span class="step-dot" data-step="4"></span>
+                            </div>
+                            
+                            <div class="step-buttons">
+                                <button type="button" class="btn-outline" id="stepPrev" style="display: none;">
+                                    <i class="fas fa-chevron-left"></i> Voltar
+                                </button>
+                                <button type="button" class="btn-dourado" id="stepNext">Próximo</button>
+                                <button type="submit" class="btn-dourado" id="stepSubmit" style="display: none;">
+                                    Criar conta <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="login-divider">
+                            <span>ou</span>
+                        </div>
+
+                        <div class="login-social">
+                            <button type="button" class="btn-social google">
+                                <i class="fab fa-google"></i>
+                                Cadastrar com Google
+                            </button>
+                            <button type="button" class="btn-social facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                Cadastrar com Facebook
+                            </button>
+                        </div>
+
+                        <div class="login-cadastro-link">
+                            Já tem uma conta? 
+                            <a href="#" id="linkLogin">Fazer login</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- MODAL DE RECUPERAÇÃO DE SENHA -->
+                <div class="modal" id="recuperarModal">
+                    <div class="modal-content modal-sm">
+                        <div class="modal-header">
+                            <h3>Recuperar senha</h3>
+                            <button class="modal-close"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Digite seu e-mail para receber as instruções de recuperação.</p>
+                            <div class="form-group">
+                                <input type="email" placeholder="seu@email.com">
+                            </div>
+                            <button class="btn-dourado btn-block">Enviar instruções</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BANNER LATERAL (APENAS DESKTOP) -->
+            <div class="login-banner">
+                <div class="banner-content">
+                    <i class="fas fa-bicycle"></i>
+                    <h2>Bem-vindo ao Espectro Bikes</h2>
+                    <p>O marketplace mais completo do mundo bike</p>
+                    
+                    <div class="banner-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Compra 100% segura</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-truck"></i>
+                            <span>Frete para todo Brasil</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <span>Produtos avaliados</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-store"></i>
+                            <span>Vendedores verificados</span>
+                        </div>
+                    </div>
+
+                    <img src="assets/icons/bike-login.svg" alt="Bike" class="banner-illustration">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SIMPLIFICADO -->
+    <footer class="footer-login">
+        <div class="container">
+            <p>&copy; 2026 Espectro Bikes. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Termos de uso</a>
+                <a href="#">Política de privacidade</a>
+                <a href="#">Ajuda</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tabs de login/cadastro
+            const tabLogin = document.getElementById('tabLogin');
+            const tabCadastro = document.getElementById('tabCadastro');
+            const formLogin = document.getElementById('formLogin');
+            const formCadastro = document.getElementById('formCadastro');
+            const linkCadastro = document.getElementById('linkCadastro');
+            const linkLogin = document.getElementById('linkLogin');
+
+            function mostrarLogin() {
+                tabLogin.classList.add('active');
+                tabCadastro.classList.remove('active');
+                formLogin.classList.add('active');
+                formCadastro.classList.remove('active');
+            }
+
+            function mostrarCadastro() {
+                tabCadastro.classList.add('active');
+                tabLogin.classList.remove('active');
+                formCadastro.classList.add('active');
+                formLogin.classList.remove('active');
+            }
+
+            tabLogin.addEventListener('click', mostrarLogin);
+            tabCadastro.addEventListener('click', mostrarCadastro);
+            linkCadastro.addEventListener('click', (e) => {
+                e.preventDefault();
+                mostrarCadastro();
+            });
+            linkLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                mostrarLogin();
+            });
+
+            // Toggle senha
+            document.querySelectorAll('.toggle-senha').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('input');
+                    const icon = this.querySelector('i');
+                    
+                    if(input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+
+            // Máscaras
+            function aplicarMascara(input, tipo) {
+                if(!input) return;
+                
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    if(tipo === 'cpf') {
+                        if(value.length <= 11) {
+                            if(value.length <= 3) {
+                                value = value;
+                            } else if(value.length <= 6) {
+                                value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+                            } else if(value.length <= 9) {
+                                value = value.replace(/^(\d{3})(\d{3})(\d)/, '$1.$2.$3');
+                            } else {
+                                value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                            }
+                        }
+                    } else if(tipo === 'tel') {
+                        if(value.length > 2 && value.length <= 6) {
+                            value = '(' + value.substring(0,2) + ') ' + value.substring(2);
+                        } else if(value.length > 6) {
+                            value = '(' + value.substring(0,2) + ') ' + value.substring(2,7) + '-' + value.substring(7,11);
+                        }
+                    } else if(tipo === 'cep') {
+                        if(value.length > 5) {
+                            value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+                        }
+                    }
+                    
+                    e.target.value = value;
+                });
+            }
+
+            aplicarMascara(document.getElementById('cadastroCpf'), 'cpf');
+            aplicarMascara(document.getElementById('cadastroTel'), 'tel');
+            aplicarMascara(document.getElementById('cadastroCep'), 'cep');
+
+            // Validação de senha em tempo real
+            const senhaInput = document.getElementById('cadastroSenha');
+            const confirmarInput = document.getElementById('cadastroConfirmarSenha');
+            const reqLength = document.getElementById('reqLength');
+            const reqNumber = document.getElementById('reqNumber');
+            const reqUpper = document.getElementById('reqUpper');
+            const reqLower = document.getElementById('reqLower');
+            const senhaMatch = document.getElementById('senhaMatch');
+
+            function validarSenha() {
+                const senha = senhaInput.value;
+                
+                // Tamanho mínimo
+                if(senha.length >= 8) {
+                    reqLength.innerHTML = '<i class="fas fa-check-circle"></i> Mínimo 8 caracteres';
+                    reqLength.style.color = '#28a745';
+                } else {
+                    reqLength.innerHTML = '<i class="far fa-circle"></i> Mínimo 8 caracteres';
+                    reqLength.style.color = '';
+                }
+                
+                // Contém número
+                if(/\d/.test(senha)) {
+                    reqNumber.innerHTML = '<i class="fas fa-check-circle"></i> Pelo menos 1 número';
+                    reqNumber.style.color = '#28a745';
+                } else {
+                    reqNumber.innerHTML = '<i class="far fa-circle"></i> Pelo menos 1 número';
+                    reqNumber.style.color = '';
+                }
+                
+                // Contém maiúscula
+                if(/[A-Z]/.test(senha)) {
+                    reqUpper.innerHTML = '<i class="fas fa-check-circle"></i> Pelo menos 1 letra maiúscula';
+                    reqUpper.style.color = '#28a745';
+                } else {
+                    reqUpper.innerHTML = '<i class="far fa-circle"></i> Pelo menos 1 letra maiúscula';
+                    reqUpper.style.color = '';
+                }
+                
+                // Contém minúscula
+                if(/[a-z]/.test(senha)) {
+                    reqLower.innerHTML = '<i class="fas fa-check-circle"></i> Pelo menos 1 letra minúscula';
+                    reqLower.style.color = '#28a745';
+                } else {
+                    reqLower.innerHTML = '<i class="far fa-circle"></i> Pelo menos 1 letra minúscula';
+                    reqLower.style.color = '';
+                }
+                
+                // Confirmar senha
+                if(confirmarInput.value) {
+                    if(senha === confirmarInput.value) {
+                        senhaMatch.innerHTML = '<i class="fas fa-check-circle"></i> Senhas coincidem';
+                        senhaMatch.style.color = '#28a745';
+                    } else {
+                        senhaMatch.innerHTML = '<i class="fas fa-exclamation-circle"></i> Senhas não coincidem';
+                        senhaMatch.style.color = '#dc3545';
+                    }
+                } else {
+                    senhaMatch.innerHTML = '';
+                }
+            }
+
+            senhaInput.addEventListener('input', validarSenha);
+            confirmarInput.addEventListener('input', validarSenha);
+
+            // Steps do cadastro
+            const steps = document.querySelectorAll('.cadastro-step');
+            const dots = document.querySelectorAll('.step-dot');
+            const stepPrev = document.getElementById('stepPrev');
+            const stepNext = document.getElementById('stepNext');
+            const stepSubmit = document.getElementById('stepSubmit');
+            let currentStep = 1;
+
+            function mostrarStep(step) {
+                steps.forEach(s => s.classList.remove('active'));
+                document.getElementById(`step${step}`).classList.add('active');
+                
+                dots.forEach((dot, index) => {
+                    if(index + 1 === step) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                if(step === 1) {
+                    stepPrev.style.display = 'none';
+                } else {
+                    stepPrev.style.display = 'block';
+                }
+                
+                if(step === 4) {
+                    stepNext.style.display = 'none';
+                    stepSubmit.style.display = 'block';
+                } else {
+                    stepNext.style.display = 'block';
+                    stepSubmit.style.display = 'none';
+                }
+            }
+
+            stepNext.addEventListener('click', () => {
+                if(currentStep < 4) {
+                    // Validar campos do step atual
+                    if(currentStep === 1) {
+                        const nome = document.getElementById('cadastroNome').value;
+                        const email = document.getElementById('cadastroEmail').value;
+                        const cpf = document.getElementById('cadastroCpf').value;
+                        const tel = document.getElementById('cadastroTel').value;
+                        const data = document.getElementById('cadastroDataNasc').value;
+                        
+                        if(!nome || !email || !cpf || !tel || !data) {
+                            alert('Preencha todos os campos obrigatórios');
+                            return;
+                        }
+                    }
+                    
+                    if(currentStep === 2) {
+                        const cep = document.getElementById('cadastroCep').value;
+                        const rua = document.getElementById('cadastroRua').value;
+                        const numero = document.getElementById('cadastroNumero').value;
+                        const bairro = document.getElementById('cadastroBairro').value;
+                        const cidade = document.getElementById('cadastroCidade').value;
+                        const estado = document.getElementById('cadastroEstado').value;
+                        
+                        if(!cep || !rua || !numero || !bairro || !cidade || !estado) {
+                            alert('Preencha todos os campos obrigatórios do endereço');
+                            return;
+                        }
+                    }
+                    
+                    if(currentStep === 3) {
+                        const senha = senhaInput.value;
+                        const confirmar = confirmarInput.value;
+                        
+                        if(senha.length < 8 || !/\d/.test(senha) || !/[A-Z]/.test(senha) || !/[a-z]/.test(senha)) {
+                            alert('Sua senha não atende aos requisitos de segurança');
+                            return;
+                        }
+                        
+                        if(senha !== confirmar) {
+                            alert('As senhas não coincidem');
+                            return;
+                        }
+                    }
+                    
+                    currentStep++;
+                    mostrarStep(currentStep);
+                }
+            });
+
+            stepPrev.addEventListener('click', () => {
+                if(currentStep > 1) {
+                    currentStep--;
+                    mostrarStep(currentStep);
+                }
+            });
+
+            // Clicar nos dots para navegar
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const step = parseInt(this.dataset.step);
+                    if(step <= currentStep) { // Só permite voltar
+                        currentStep = step;
+                        mostrarStep(currentStep);
+                    }
+                });
+            });
+
+            // Buscar CEP
+            document.getElementById('buscarCep').addEventListener('click', function() {
+                const cep = document.getElementById('cadastroCep').value.replace(/\D/g, '');
+                
+                if(cep.length === 8) {
+                    // Simular busca de CEP
+                    document.getElementById('cadastroRua').value = 'Rua das Bicicletas';
+                    document.getElementById('cadastroBairro').value = 'Centro';
+                    document.getElementById('cadastroCidade').value = 'São Paulo';
+                    document.getElementById('cadastroEstado').value = 'SP';
+                    
+                    alert('CEP encontrado! Campos preenchidos automaticamente.');
+                } else {
+                    alert('CEP inválido');
+                }
+            });
+
+            // Modal de recuperar senha
+            document.querySelector('.esqueci-senha').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('recuperarModal').style.display = 'flex';
+            });
+
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+
+            // Fechar modal clicando fora
+            window.addEventListener('click', (e) => {
+                if(e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
+                }
+            });
+
+            // Login form submit
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const senha = document.getElementById('loginSenha').value;
+                
+                // Simular login
+                if(email && senha) {
+                    // Salvar usuário no localStorage
+                    localStorage.setItem('usuario', JSON.stringify({
+                        nome: 'João Silva',
+                        email: email,
+                        logado: true,
+                        tipo: 'comprador'
+                    }));
+                    
+                    alert('Login realizado com sucesso!');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Preencha todos os campos');
+                }
+            });
+
+            // Cadastro form submit
+            document.getElementById('cadastroForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                if(!document.getElementById('aceitoTermos').checked) {
+                    alert('Você precisa aceitar os termos de uso');
+                    return;
+                }
+                
+                const nome = document.getElementById('cadastroNome').value;
+                const email = document.getElementById('cadastroEmail').value;
+                
+                // Simular cadastro
+                localStorage.setItem('usuario', JSON.stringify({
+                    nome: nome,
+                    email: email,
+                    logado: true,
+                    tipo: 'comprador'
+                }));
+                
+                alert('Cadastro realizado com sucesso! Bem-vindo ao Espectro Bikes!');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

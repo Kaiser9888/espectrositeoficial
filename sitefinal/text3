@@ -1,0 +1,90 @@
+espectro-bikes/
+│
+├── 📄 index.html (HOME COMPLETA)
+│   ├── Banner rotativo (Império Romano)
+│   ├── "Produtos pesquisados recentemente" (dinâmico)
+│   ├── "Diversos produtos" (grid com 8+ produtos)
+│   ├── Cada produto com: preço, CEP p/ frete, selo seguro
+│   └── Menu completo funcional
+│
+├── 📄 cadastro-produto.html
+│   ├── Upload múltiplas imagens (drag & drop + preview)
+│   ├── Formulário: nome, preço, categoria, descrição, condição
+│   └── Dados do vendedor vinculado
+│
+├── 📄 perfil.html
+│   ├── Dados do usuário
+│   ├── Histórico de pedidos (com status)
+│   ├── Avaliações recebidas
+│   └── Produtos anunciados
+│
+├── 📄 login.html
+│   └── Login + Cadastro (abas)
+│
+├── 📄 produto.html (página detalhe do produto)
+│   ├── Galeria de imagens
+│   ├── Descrição completa
+│   ├── Cálculo de frete por CEP (funcional)
+│   ├── Botão comprar
+│   ├── Avaliações (estrelas + comentários)
+│   └── Botão "mensagem para vendedor"
+│
+├── 📄 carrinho.html
+│   ├── Lista de produtos
+│   ├── Cálculo de frete por CEP
+│   ├── Resumo com total
+│   └── Botão checkout
+│
+├── 📄 checkout.html
+│   ├── Endereço de entrega
+│   ├── Formas de pagamento (ícones seguros)
+│   ├── Parcelamento simulado
+│   └── Confirmação
+│
+├── 📄 categoria.html (dinâmica)
+│   ├── Filtros laterais (preço, condição, avaliação)
+│   ├── Ordenação
+│   └── Grid de produtos
+│
+├── 📄 duvidas.html
+│   ├── Categorias de dúvidas
+│   ├── Perguntas recentes
+│   └── Responder / Nova pergunta
+│
+├── 📄 videos.html
+│   ├── Grid de vídeos
+│   ├── Filtros por modalidade
+│   └── Player embutido
+│
+├── 📄 mensagens.html
+│   ├── Lista de conversas
+│   ├── Chat em tempo real (preparado)
+│   └── Notificações de nova mensagem
+│
+├── 📄 notificacoes.html
+│   └── Central de notificações
+│
+├── 🎨 css/
+│   ├── style.css (tema Império Romano)
+│   ├── responsivo.css (mobile/tablet/desktop)
+│   └── componentes.css (botões, cards, modais)
+│
+├── ⚡ js/
+│   ├── main.js (menu, notificações, utils)
+│   ├── home.js (banners, produtos recentes)
+│   ├── produto.js (detalhes, frete, avaliações)
+│   ├── carrinho.js (cálculos, frete, localStorage)
+│   ├── cadastro-produto.js (upload imagens)
+│   ├── filtros.js (busca avançada)
+│   ├── auth.js (login, cadastro, sessão)
+│   ├── mensagens.js (chat)
+│   ├── data.js (MOCKADO - fácil de substituir)
+│   └── api.js (PREPARADO para Spring Boot!)
+│
+├── 🖼️ assets/
+│   ├── banners/
+│   ├── produtos/
+│   ├── icons/
+│   └── categorias/
+│
+└── 📖 README.md (GUIA DE INTEGRAÇÃO COM SPRING BOOT)
